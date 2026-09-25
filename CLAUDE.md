@@ -13,6 +13,7 @@ Target hardware: RTX 3060 Ti, **8GB VRAM**. Keep models ~≤8B at 4-bit; only on
 Early stage — scripts only, no app, RAG pipeline, or tests yet.
 - `scripts/test_vision.py`: single-image VLM smoke test; also holds shared `MODEL`, `NUM_CTX`, `load_resized()` (imported by other scripts, so run scripts from repo root as `python scripts/<name>.py`).
 - `scripts/eval_baseline.py`: classifies every `samples/*.jpg` (label = filename prefix, e.g. `shio_3.jpg` → `shio`), writes `results/baseline_<variant>_<timestamp>.json`. Baseline accuracy: 17% (label-first), 4% (`--reason-first`) — details in `docs/experiments.md`.
+- `scripts/eval_features.py`: asks the VLM only visible features (soup / clarity / color / noodle) as English enums and grades against `data/labels.csv` (hand-labeled; `noodle=unknown` rows are skipped). Result: soup 100%, clarity 74%, color 78%, noodle 47%. This "VLM sees, RAG judges" split is the chosen direction; next is the RAG knowledge docs.
 
 `samples/` is gitignored: the user's photos contain GPS EXIF. Never commit originals; make EXIF-stripped, downscaled copies if images are needed in the repo.
 
@@ -22,7 +23,8 @@ Early stage — scripts only, no app, RAG pipeline, or tests yet.
 .\venv\Scripts\Activate.ps1                         # activate venv (Python 3.14)
 pip install -r requirements.txt
 python scripts/test_vision.py samples/shio_1.jpg    # VLM smoke test
-python scripts/eval_baseline.py [--reason-first]    # accuracy over all samples (~1–4 min)
+python scripts/eval_baseline.py [--reason-first]    # style accuracy over all samples (~1–4 min)
+python scripts/eval_features.py                     # visual-feature accuracy vs data/labels.csv (~30 s)
 ollama list                                         # models: qwen2.5vl:7b (vision), bge-m3 (embeddings)
 ```
 

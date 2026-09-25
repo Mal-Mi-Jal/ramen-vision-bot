@@ -1,0 +1,381 @@
+{
+  "summary": {
+    "model": "qwen2.5vl:7b",
+    "accuracy": {
+      "soup": 1.0,
+      "clarity": 0.7391304347826086,
+      "color": 0.782608695652174,
+      "noodle": 0.4666666666666667
+    }
+  },
+  "rows": [
+    {
+      "file": "aburasoba_1.jpg",
+      "gt": {
+        "soup": "no",
+        "clarity": "none",
+        "color": "none",
+        "noodle": "thick"
+      },
+      "pred": {
+        "soup": "no",
+        "clarity": "none",
+        "color": "none",
+        "noodle": "unknown"
+      },
+      "seconds": 1.1
+    },
+    {
+      "file": "aburasoba_2.jpg",
+      "gt": {
+        "soup": "no",
+        "clarity": "none",
+        "color": "none",
+        "noodle": "thick"
+      },
+      "pred": {
+        "soup": "no",
+        "clarity": "none",
+        "color": "none",
+        "noodle": "unknown"
+      },
+      "seconds": 0.9
+    },
+    {
+      "file": "aburasoba_3.jpg",
+      "gt": {
+        "soup": "no",
+        "clarity": "none",
+        "color": "none",
+        "noodle": "unknown"
+      },
+      "pred": {
+        "soup": "no",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown"
+      },
+      "seconds": 1.0
+    },
+    {
+      "file": "donkotsu_1.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown"
+      },
+      "seconds": 1.0
+    },
+    {
+      "file": "ieke_1.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thick"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "medium"
+      },
+      "seconds": 1.0
+    },
+    {
+      "file": "ieke_2.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thick"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thin"
+      },
+      "seconds": 1.0
+    },
+    {
+      "file": "karai_1.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "red_orange",
+        "noodle": "thin"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thick"
+      },
+      "seconds": 1.0
+    },
+    {
+      "file": "miso_1.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown"
+      },
+      "seconds": 1.0
+    },
+    {
+      "file": "shio_1.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "seconds": 1.0
+    },
+    {
+      "file": "shio_2.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "pale_gold",
+        "noodle": "unknown"
+      },
+      "seconds": 1.0
+    },
+    {
+      "file": "shio_3.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "seconds": 0.9
+    },
+    {
+      "file": "shio_4.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "dark_brown",
+        "noodle": "thin"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thin"
+      },
+      "seconds": 1.0
+    },
+    {
+      "file": "shio_5.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "seconds": 0.9
+    },
+    {
+      "file": "shio_6.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "seconds": 0.9
+    },
+    {
+      "file": "shio_7.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin"
+      },
+      "seconds": 0.9
+    },
+    {
+      "file": "shoyu_1.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "dark_brown",
+        "noodle": "medium"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "thick"
+      },
+      "seconds": 1.0
+    },
+    {
+      "file": "shoyu_2.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "dark_brown",
+        "noodle": "unknown"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "unknown"
+      },
+      "seconds": 0.9
+    },
+    {
+      "file": "shoyu_3.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "dark_brown",
+        "noodle": "thin"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "thin"
+      },
+      "seconds": 2.0
+    },
+    {
+      "file": "shoyu_4.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "dark_brown",
+        "noodle": "thin"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "thick"
+      },
+      "seconds": 2.0
+    },
+    {
+      "file": "shoyupaitan_1.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown"
+      },
+      "seconds": 2.0
+    },
+    {
+      "file": "shoyupaitan_2.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "pale_gold",
+        "noodle": "unknown"
+      },
+      "seconds": 2.0
+    },
+    {
+      "file": "toripaitan_1.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "creamy_white",
+        "noodle": "unknown"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "creamy_white",
+        "noodle": "unknown"
+      },
+      "seconds": 1.9
+    },
+    {
+      "file": "toripaitan_2.jpg",
+      "gt": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "creamy_white",
+        "noodle": "unknown"
+      },
+      "pred": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "pale_gold",
+        "noodle": "unknown"
+      },
+      "seconds": 2.0
+    }
+  ]
+}

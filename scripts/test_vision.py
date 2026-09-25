@@ -9,7 +9,7 @@ import time
 from pathlib import Path
 
 import ollama
-from PIL import Image
+from PIL import Image, ImageOps
 
 MODEL = "qwen2.5vl:7b"
 MAX_SIDE = 1024  # 이미지 긴 변 최대 픽셀. 클수록 이미지 토큰이 늘어난다 (약 28x28px당 1토큰)
@@ -24,7 +24,8 @@ PROMPT = """이 사진을 보고 한국어로 답해줘.
 
 def load_resized(image_path: Path, verbose: bool = True) -> bytes:
     """이미지를 긴 변 MAX_SIDE 이하로 줄여서 JPEG 바이트로 돌려준다."""
-    img = Image.open(image_path).convert("RGB")
+    # exif_transpose: 폰 사진은 EXIF 회전 정보로만 세워져 있는 경우가 있어서, 실제 픽셀을 바로 세운다
+    img = ImageOps.exif_transpose(Image.open(image_path)).convert("RGB")
     original = img.size
     img.thumbnail((MAX_SIDE, MAX_SIDE))  # 비율 유지하며 축소 (작은 이미지는 그대로)
     if verbose:
