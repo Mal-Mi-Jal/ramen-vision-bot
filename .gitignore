@@ -12,3 +12,6 @@ models/
 
 # 원본 사진: GPS 위치정보(EXIF) 포함 + 용량 큼. 공개용은 EXIF 제거한 축소본을 따로 만든다
 samples/
+
+# pip install -e . 가 만드는 설치 정보
+*.egg-info/

@@ -1,0 +1,903 @@
+{
+  "summary": {
+    "accuracy": 0.21739130434782608,
+    "correct": 5,
+    "total": 23,
+    "retrieval_recall": 0.7391304347826086
+  },
+  "rows": [
+    {
+      "file": "aburasoba_1.jpg",
+      "answer": "aburasoba",
+      "features": {
+        "soup": "no",
+        "clarity": "none",
+        "color": "none",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": true,
+          "raw_egg_yolk": false,
+          "chopped_onion": true
+        }
+      },
+      "query": "국물 없음, 비벼 먹는 라멘, 토핑: 큰 김, 고춧가루·고추기름, 다진 양파",
+      "retrieved": [
+        "aburasoba#요약 (0.303)",
+        "shio#대표 토핑 (0.331)",
+        "ieke#대표 토핑 (0.340)",
+        "shoyu#대표 토핑 (0.343)",
+        "shio#요약 (0.355)",
+        "karai#매운맛을 내는 재료 (0.372)"
+      ],
+      "reason": "The photo indicates the presence of chili, which is a key ingredient in spicy ramen styles. The absence of soup and the mention of toppings like large nori and chopped onion suggest a style that focuses on the texture and flavor of the toppings rather than a traditional broth-based ramen.",
+      "style": "aburasoba",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/油そば"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 12.5
+    },
+    {
+      "file": "aburasoba_2.jpg",
+      "answer": "aburasoba",
+      "features": {
+        "soup": "no",
+        "clarity": "none",
+        "color": "none",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": true,
+          "chopped_onion": true
+        }
+      },
+      "query": "국물 없음, 비벼 먹는 라멘, 토핑: 날달걀 노른자, 다진 양파",
+      "retrieved": [
+        "aburasoba#요약 (0.344)",
+        "shio#대표 토핑 (0.373)",
+        "shio#요약 (0.392)",
+        "shio#국물 (0.395)",
+        "donkotsu#대표 토핑 (0.404)",
+        "toripaitan#요약 (0.406)"
+      ],
+      "reason": "The photo indicates no soup, and the toppings include raw egg yolk and chopped onion, which are common in abura soba. The lack of visible broth and the presence of these specific toppings align with the description of abura soba.",
+      "style": "aburasoba",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/油そば"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 6.8
+    },
+    {
+      "file": "aburasoba_3.jpg",
+      "answer": "aburasoba",
+      "features": {
+        "soup": "no",
+        "clarity": "cloudy",
+        "color": "none",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": true,
+          "raw_egg_yolk": true,
+          "chopped_onion": true
+        }
+      },
+      "query": "국물 없음, 비벼 먹는 라멘, 토핑: 고춧가루·고추기름, 날달걀 노른자, 다진 양파",
+      "retrieved": [
+        "aburasoba#요약 (0.304)",
+        "shio#대표 토핑 (0.331)",
+        "shio#요약 (0.352)",
+        "shoyu#대표 토핑 (0.356)",
+        "shio#국물 (0.357)",
+        "donkotsu#대표 토핑 (0.364)"
+      ],
+      "reason": "The observed features indicate a spicy and potentially raw egg-based ramen, which aligns with the characteristics of a chili ramen. The chili and raw egg yolk suggest a spicy and flavorful broth, which is common in certain ramen styles.",
+      "style": "shoyu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/醤油ラーメン"
+      ],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 6.8
+    },
+    {
+      "file": "donkotsu_1.jpg",
+      "answer": "donkotsu",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": true
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 토핑: 큰 김, 다진 양파",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.336)",
+        "shoyupaitan#국물 (0.340)",
+        "basics#백탕 (0.368)",
+        "shio#국물 (0.378)",
+        "miso#국물 (0.380)",
+        "toripaitan#사진으로 구분하는 법 (0.381)"
+      ],
+      "reason": "The soup is cloudy, the color is light brown, and the toppings include large nori and chopped onion. These features align with the description of a shoyu bai-tang ramen, which typically has a cloudy, light brown broth and is often served with large nori and chopped onion.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": false,
+      "seconds": 7.3
+    },
+    {
+      "file": "ieke_1.jpg",
+      "answer": "ieke",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "medium",
+        "toppings": {
+          "spinach": true,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 중간 굵기 면, 토핑: 시금치, 큰 김",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.330)",
+        "shoyupaitan#국물 (0.338)",
+        "shio#국물 (0.356)",
+        "miso#국물 (0.365)",
+        "basics#청탕 (0.381)",
+        "ieke#국물 (0.381)"
+      ],
+      "reason": "The soup is cloudy and light brown, which aligns with the characteristics of a 白湯 (백탕) ramen. The presence of spinach and large nori also suggests a more traditional style, which is typical of 白湯 ramen.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.5
+    },
+    {
+      "file": "ieke_2.jpg",
+      "answer": "ieke",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": true,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 가는 면, 토핑: 시금치, 큰 김",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.331)",
+        "shoyupaitan#국물 (0.338)",
+        "shio#국물 (0.366)",
+        "miso#국물 (0.375)",
+        "basics#백탕 (0.382)",
+        "basics#청탕 (0.384)"
+      ],
+      "reason": "The soup is cloudy and light brown, which aligns with the characteristics of a 白湯 (백탕) ramen. The toppings include spinach and large nori, which are common in 白湯 (백탕) ramen. The soup's color and clarity are consistent with the description of 白湯 (백탕) ramen in the reference documents.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": false,
+      "seconds": 7.8
+    },
+    {
+      "file": "karai_1.jpg",
+      "answer": "karai",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thick",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": true,
+          "raw_egg_yolk": true,
+          "chopped_onion": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 굵은 면, 토핑: 큰 김, 고춧가루·고추기름, 날달걀 노른자",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.312)",
+        "shoyupaitan#국물 (0.317)",
+        "shio#국물 (0.341)",
+        "miso#국물 (0.342)",
+        "toripaitan#국물 (0.349)",
+        "basics#백탕 (0.352)"
+      ],
+      "reason": "The soup is cloudy and light brown, which aligns with the characteristics of a 白湯 (백탕) ramen. The presence of chili and raw egg yolk suggests a savory and slightly spicy flavor profile, which is common in 白湯 ramen. The color and clarity of the soup are consistent with the description of 白湯 ramen in the reference documents.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": false,
+      "seconds": 7.9
+    },
+    {
+      "file": "miso_1.jpg",
+      "answer": "miso",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": true,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": true
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 토핑: 옥수수, 다진 양파",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.333)",
+        "shoyupaitan#국물 (0.344)",
+        "miso#국물 (0.354)",
+        "basics#백탕 (0.371)",
+        "donkotsu#국물 (0.375)",
+        "ieke#국물 (0.381)"
+      ],
+      "reason": "The soup is cloudy and light brown, which aligns with the characteristics of a 白湯 (백탕) ramen. The presence of corn and chopped onion suggests a more modern or regional style, but the soup's clarity and color are key indicators.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.3
+    },
+    {
+      "file": "shio_1.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": true
+        }
+      },
+      "query": "투명한 맑은 국물 (청탕), 옅은 노란색·금색 국물, 가는 면, 토핑: 다진 양파",
+      "retrieved": [
+        "shio#국물 (0.329)",
+        "basics#사진으로 구분하는 법 (0.335)",
+        "basics#청탕 (0.349)",
+        "miso#국물 (0.356)",
+        "shoyupaitan#국물 (0.362)",
+        "shoyu#국물 (0.363)"
+      ],
+      "reason": "The soup is clear and pale gold in color, which aligns with the description of a clear broth (청탕) in the reference documents. The toppings include chopped onion, which is a common ingredient in various ramen styles, but the soup's clarity and color suggest it is a clear broth.",
+      "style": "shoyu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/醤油ラーメン"
+      ],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.5
+    },
+    {
+      "file": "shio_2.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "pale_gold",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": true,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": true
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 옅은 노란색·금색 국물, 토핑: 베니쇼가(붉은 초생강), 다진 양파",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.343)",
+        "shoyupaitan#국물 (0.350)",
+        "basics#백탕 (0.355)",
+        "shio#국물 (0.362)",
+        "miso#국물 (0.372)",
+        "donkotsu#국물 (0.373)"
+      ],
+      "reason": "The soup is described as cloudy and pale gold, which aligns with the characteristics of a 白湯 (백탕) ramen. The color and clarity suggest a rich, creamy broth typical of 白湯 ramen, where the broth is made from long-simmered bones and collagen, giving it a thick and slightly opaque appearance.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.8
+    },
+    {
+      "file": "shio_3.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": true,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": true,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": false
+        }
+      },
+      "query": "투명한 맑은 국물 (청탕), 옅은 노란색·금색 국물, 가는 면, 토핑: 숙주, 조개",
+      "retrieved": [
+        "shio#국물 (0.341)",
+        "basics#사진으로 구분하는 법 (0.352)",
+        "miso#국물 (0.365)",
+        "basics#청탕 (0.374)",
+        "shoyupaitan#국물 (0.380)",
+        "shoyu#국물 (0.380)"
+      ],
+      "reason": "The soup is clear and pale gold in color, which aligns with the description of a clear broth (청탕) in the reference documents. The presence of bean sprouts and clams further supports the characteristics of a clear broth ramen.",
+      "style": "shoyu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/醤油ラーメン"
+      ],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.2
+    },
+    {
+      "file": "shio_4.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": true,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": true,
+          "chili": false,
+          "raw_egg_yolk": true,
+          "chopped_onion": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 가는 면, 토핑: 숙주, 조개, 날달걀 노른자",
+      "retrieved": [
+        "shoyupaitan#국물 (0.339)",
+        "basics#사진으로 구분하는 법 (0.340)",
+        "miso#국물 (0.349)",
+        "shio#국물 (0.365)",
+        "toripaitan#국물 (0.368)",
+        "ieke#국물 (0.370)"
+      ],
+      "reason": "The soup is cloudy and light brown, which matches the characteristics of a 白湯 (white soup) ramen. The presence of bean sprouts and clams, along with the light brown color, suggests a style similar to the Shoyu Paityan ramen, which is known for its cloudy, light brown broth.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.6
+    },
+    {
+      "file": "shio_5.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": false
+        }
+      },
+      "query": "투명한 맑은 국물 (청탕), 옅은 노란색·금색 국물, 가는 면",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.319)",
+        "shio#국물 (0.328)",
+        "miso#국물 (0.332)",
+        "basics#청탕 (0.338)",
+        "basics#요약 (0.356)",
+        "shio#사진으로 구분하는 법 (0.359)"
+      ],
+      "reason": "The soup is clear, the color is pale gold, and the clarity is described as clear, which aligns with the characteristics of a pale gold soup in a clear broth. This matches the description of a Shoyu ramen, which typically has a pale gold color and a clear broth.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.7
+    },
+    {
+      "file": "shio_6.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": true
+        }
+      },
+      "query": "투명한 맑은 국물 (청탕), 옅은 노란색·금색 국물, 가는 면, 토핑: 큰 김, 다진 양파",
+      "retrieved": [
+        "shio#국물 (0.328)",
+        "basics#사진으로 구분하는 법 (0.330)",
+        "basics#청탕 (0.342)",
+        "shoyupaitan#국물 (0.357)",
+        "shoyu#국물 (0.357)",
+        "basics#요약 (0.361)"
+      ],
+      "reason": "The soup is clear and pale gold in color, which aligns with the description of a clear broth in the reference documents. The toppings include large nori and chopped onion, which are common in a variety of ramen styles, but the clear broth and pale gold color suggest a light broth, typically found in a clear broth style.",
+      "style": "shoyu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/醤油ラーメン"
+      ],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.7
+    },
+    {
+      "file": "shio_7.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": true,
+          "chopped_onion": true
+        }
+      },
+      "query": "투명한 맑은 국물 (청탕), 옅은 노란색·금색 국물, 가는 면, 토핑: 날달걀 노른자, 다진 양파",
+      "retrieved": [
+        "shio#국물 (0.305)",
+        "basics#사진으로 구분하는 법 (0.325)",
+        "miso#국물 (0.336)",
+        "basics#청탕 (0.339)",
+        "toripaitan#국물 (0.346)",
+        "shoyupaitan#국물 (0.347)"
+      ],
+      "reason": "The soup is clear and pale gold in color, which aligns with the description of a clear broth in the reference documents. The presence of raw egg yolk and chopped onion suggests a style that might be associated with a light broth, possibly a variation of a clear broth ramen.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.5
+    },
+    {
+      "file": "shoyu_1.jpg",
+      "answer": "shoyu",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "medium",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": true,
+          "chopped_onion": true
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 진한 갈색 간장색 국물, 중간 굵기 면, 토핑: 날달걀 노른자, 다진 양파",
+      "retrieved": [
+        "shoyupaitan#국물 (0.322)",
+        "basics#사진으로 구분하는 법 (0.326)",
+        "miso#국물 (0.347)",
+        "shio#국물 (0.347)",
+        "shoyu#국물 (0.350)",
+        "toripaitan#국물 (0.351)"
+      ],
+      "reason": "The soup is cloudy and dark brown, which aligns with the characteristics of a 白湯 (white soup) base. The presence of raw egg yolk and chopped onion suggests a style that might be more savory and rich, which is typical of 白湯拉麺 (Shoyu Paityan Ramen).",
+      "style": "shoyu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/醤油ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 7.7
+    },
+    {
+      "file": "shoyu_2.jpg",
+      "answer": "shoyu",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": true,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": true,
+          "chopped_onion": true
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 진한 갈색 간장색 국물, 토핑: 시금치, 날달걀 노른자, 다진 양파",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.315)",
+        "shoyupaitan#국물 (0.320)",
+        "shio#국물 (0.327)",
+        "miso#국물 (0.343)",
+        "basics#백탕 (0.345)",
+        "shoyupaitan#요약 (0.359)"
+      ],
+      "reason": "The soup is described as cloudy and dark brown, which aligns with the characteristics of a 白湯 (백탕) ramen. The presence of raw egg yolk and chopped onion suggests a rich, savory broth typical of 白湯 ramen.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": true,
+      "retrieval_hit": false,
+      "seconds": 7.4
+    },
+    {
+      "file": "shoyu_3.jpg",
+      "answer": "shoyu",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": true,
+          "chopped_onion": true
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 진한 갈색 간장색 국물, 가는 면, 토핑: 날달걀 노른자, 다진 양파",
+      "retrieved": [
+        "shoyupaitan#국물 (0.312)",
+        "basics#사진으로 구분하는 법 (0.323)",
+        "miso#국물 (0.345)",
+        "shoyu#국물 (0.347)",
+        "shio#국물 (0.349)",
+        "toripaitan#국물 (0.355)"
+      ],
+      "reason": "The soup is cloudy and dark brown, which aligns with the characteristics of a 白湯 (white soup) base. The presence of raw egg yolk and chopped onion suggests a style that might be more savory and rich, which is typical of 白湯拉麺 (Shoyu Paityan Ramen).",
+      "style": "shoyupaitan",
+      "sources": [
+        "https://cookpit.jp/local-ramen-guide/gotochi-list/toripaitanramen/",
+        "https://ramen-battle.com/648/"
+      ],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.8
+    },
+    {
+      "file": "shoyu_4.jpg",
+      "answer": "shoyu",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "thick",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": true
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 진한 갈색 간장색 국물, 굵은 면, 토핑: 큰 김, 다진 양파",
+      "retrieved": [
+        "shoyupaitan#국물 (0.330)",
+        "basics#사진으로 구분하는 법 (0.331)",
+        "shoyu#국물 (0.365)",
+        "shoyupaitan#요약 (0.365)",
+        "basics#백탕 (0.377)",
+        "shio#국물 (0.378)"
+      ],
+      "reason": "The soup is cloudy and dark brown, which aligns with the characteristics of a 白湯 (white soup) base. The presence of large nori and chopped onion suggests a savory flavor profile, typical of a 白湯ラーメン (shoyu white soup ramen).",
+      "style": "shoyu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/醤油ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 7.6
+    },
+    {
+      "file": "shoyupaitan_1.jpg",
+      "answer": "shoyupaitan",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": true,
+          "raw_egg_yolk": true,
+          "chopped_onion": true
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 토핑: 큰 김, 고춧가루·고추기름, 날달걀 노른자, 다진 양파",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.307)",
+        "shoyupaitan#국물 (0.318)",
+        "shio#국물 (0.342)",
+        "basics#백탕 (0.342)",
+        "miso#국물 (0.347)",
+        "toripaitan#국물 (0.357)"
+      ],
+      "reason": "The soup is cloudy and light brown, which aligns with the characteristics of a 白湯 (백탕) ramen. The presence of chili and raw egg yolk suggests a spicy and savory flavor profile, which is common in 白湯 ramen. Additionally, the light brown color and cloudy texture are consistent with the description of 白湯 ramen in the reference documents.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.9
+    },
+    {
+      "file": "shoyupaitan_2.jpg",
+      "answer": "shoyupaitan",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "pale_gold",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": true
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 옅은 노란색·금색 국물, 토핑: 큰 김, 다진 양파",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.325)",
+        "shoyupaitan#국물 (0.332)",
+        "basics#백탕 (0.353)",
+        "shio#국물 (0.355)",
+        "shoyupaitan#요약 (0.365)",
+        "toripaitan#요약 (0.369)"
+      ],
+      "reason": "The soup is described as cloudy and pale gold, which aligns with the characteristics of a white broth (백탕) ramen. The color and clarity of the broth suggest it is a white broth ramen, as described in the reference documents.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 7.3
+    },
+    {
+      "file": "toripaitan_1.jpg",
+      "answer": "toripaitan",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "creamy_white",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": true,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": true,
+          "chopped_onion": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 뽀얀 우윳빛 크림색 국물, 토핑: 베니쇼가(붉은 초생강), 날달걀 노른자",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.348)",
+        "shoyupaitan#국물 (0.352)",
+        "basics#백탕 (0.357)",
+        "miso#국물 (0.358)",
+        "shio#국물 (0.359)",
+        "donkotsu#국물 (0.368)"
+      ],
+      "reason": "The soup is cloudy and creamy white, which aligns with the characteristics of a 白湯 (백탕) ramen. The presence of red pickled ginger and a raw egg yolk suggests a savory and rich flavor profile, consistent with the description of a 白湯 ramen.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": false,
+      "seconds": 7.5
+    },
+    {
+      "file": "toripaitan_2.jpg",
+      "answer": "toripaitan",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "pale_gold",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false,
+          "raw_egg_yolk": false,
+          "chopped_onion": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 옅은 노란색·금색 국물",
+      "retrieved": [
+        "basics#사진으로 구분하는 법 (0.312)",
+        "shoyupaitan#국물 (0.359)",
+        "shio#국물 (0.360)",
+        "basics#백탕 (0.369)",
+        "miso#국물 (0.370)",
+        "basics#청탕 (0.372)"
+      ],
+      "reason": "The soup is described as cloudy and pale gold, which aligns with the characteristics of a 白湯 (백탕) ramen. The color and clarity of the soup suggest it is a rich, creamy broth typical of 白湯 ramen.",
+      "style": "shoyu",
+      "sources": [],
+      "correct": false,
+      "retrieval_hit": false,
+      "seconds": 7.4
+    }
+  ]
+}

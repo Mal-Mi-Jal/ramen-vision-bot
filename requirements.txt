@@ -1,2 +1,5 @@
 ollama
 pillow
+chromadb
+pyyaml
+-e .

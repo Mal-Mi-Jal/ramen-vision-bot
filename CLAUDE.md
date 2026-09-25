@@ -10,11 +10,22 @@ Target hardware: RTX 3060 Ti, **8GB VRAM**. Keep models ~≤8B at 4-bit; only on
 
 ## Status
 
-Early stage — scripts only, no app, RAG pipeline, or tests yet.
-- `scripts/test_vision.py`: single-image VLM smoke test; also holds shared `MODEL`, `NUM_CTX`, `load_resized()` (imported by other scripts, so run scripts from repo root as `python scripts/<name>.py`).
+Working RAG pipeline for photo → style (57% on our 23 photos vs 17% VLM-only; see `docs/experiments.md` 실험 6). No app/UI or tests yet.
+
+Core logic lives in the `ramen_bot/` package (installed editable via `-e .` in requirements.txt, so scripts can `import ramen_bot` from anywhere):
+- `vision.py`: `MODEL`, `NUM_CTX`, `load_resized()`, `extract_features()` — VLM returns only visible features (soup / clarity / color / noodle enums + a yes/no `TOPPINGS` checklist). Never ask it for the style.
+- `knowledge.py`: splits `knowledge/*.md` into `## ` sections, embeds with `bge-m3` via Ollama, stores in Chroma (`chroma_db/`). Metadata per chunk: `style`, `heading`, `sources`, `soup` (from frontmatter). Chunk id = `<style>#<heading>`. "프로젝트 관찰" sections are excluded (they describe the test photos → data leakage).
+- `judge.py`: features → Korean query → **hybrid retrieval** (metadata filter on `soup` + vector search over only the "사진으로 구분하는 법" sections, k=5) → candidates' criteria + "비슷한 종류와 구분" sections → LLM picks a style from the candidate enum. Sources are attached by code from the chosen style's doc, not written by the LLM. One candidate → no LLM call.
+
+Scripts (run from repo root):
+- `scripts/test_vision.py`: single-image free-form VLM smoke test.
 - `scripts/eval_baseline.py`: classifies every `samples/*.jpg` (label = filename prefix, e.g. `shio_3.jpg` → `shio`), writes `results/baseline_<variant>_<timestamp>.json`. Baseline accuracy: 17% (label-first), 4% (`--reason-first`) — details in `docs/experiments.md`.
 - `scripts/eval_features.py`: asks the VLM only visible features (soup / clarity / color / noodle) as English enums and grades against `data/labels.csv` (hand-labeled; `noodle=unknown` rows are skipped). Result: soup 100%, clarity 74%, color 78%, noodle 47%. This "VLM sees, RAG judges" split is the chosen direction.
-- `knowledge/*.md`: RAG source docs, one per style (filename = style label) plus `00_soup_basics.md` (清湯 vs 白湯). Each has YAML frontmatter (`style`, `visual` using the same enum vocabulary as `eval_features.py`, `sources` URLs) and a "사진으로 구분하는 법" section. Keep sourced facts separate from the "프로젝트 관찰" section (observations from our own photos/evals). Next step: embed these with `bge-m3` into Chroma and have the VLM features + retrieved docs decide the style.
+- `scripts/build_index.py ["검색어"]`: rebuild Chroma from `knowledge/` (required after any doc edit); optional query prints top hits.
+- `scripts/eval_rag.py`: full pipeline over `samples/`, reports accuracy + retrieval recall (was the true style among candidates), writes `results/rag_<timestamp>.json`.
+- `knowledge/*.md`: RAG source docs, one per style (filename = style label) plus `00_soup_basics.md` (清湯 vs 白湯). YAML frontmatter: `style`, `visual` (same enum vocabulary as `vision.py`), `sources`. Sections the pipeline depends on by exact heading: "사진으로 구분하는 법" (only the style's own positive cues, phrased in the same Korean words as `judge.KO` — comparisons here turned docs into retrieval "hubs") and "비슷한 종류와 구분" (comparisons). Keep sourced facts out of "프로젝트 관찰".
+- Known weak spots (don't re-discover): VLM calls dark shoyu broth "cloudy"; judge picks ieke from nori alone; embeddings ignore negation ("국물 없음") — that's why soup is a metadata filter.
+- The 23 photos were used for tuning v1→v3, so they are no longer a clean test set; a held-out photo set is the next evaluation need.
 - `data/labels.csv` `note` column marks edge cases the user confirmed (e.g. shio_2 chicken-heavy, shio_4 clam broth looks amber).
 
 `samples/` is gitignored: the user's photos contain GPS EXIF. Never commit originals; make EXIF-stripped, downscaled copies if images are needed in the repo.
@@ -27,6 +38,8 @@ pip install -r requirements.txt
 python scripts/test_vision.py samples/shio_1.jpg    # VLM smoke test
 python scripts/eval_baseline.py [--reason-first]    # style accuracy over all samples (~1–4 min)
 python scripts/eval_features.py                     # visual-feature accuracy vs data/labels.csv (~30 s)
+python scripts/build_index.py                       # rebuild Chroma after editing knowledge/
+python scripts/eval_rag.py                          # full RAG pipeline accuracy (~2 min)
 ollama list                                         # models: qwen2.5vl:7b (vision), bge-m3 (embeddings)
 ```
 
@@ -38,7 +51,8 @@ Environment gotchas:
 ## Architecture decisions
 
 - **Images must be downscaled before sending to the VLM.** Qwen2.5-VL spends ~1 token per 28×28px patch; a 4000×3000 phone photo overflows Ollama's default 4096 context. Resize to long side 1024px (`MAX_SIDE`) and pass `options={"num_ctx": 8192}`.
-- **Separate "seeing" from "judging".** Baseline showed the 7B VLM detects objects reasonably but hallucinates ramen type and even non-existent soup (see `docs/experiments.md`). Planned design: VLM extracts only visual features (soup present?, soup color, noodle thickness, toppings) → RAG over ramen-knowledge docs decides the style and cites sources.
+- **Separate "seeing" from "judging".** Baseline showed the 7B VLM detects objects reasonably but hallucinates ramen type and even non-existent soup (see `docs/experiments.md`). Implemented in `ramen_bot/` (see Status).
 - **Structured Output guards for the 7B VLM:** it falls into repetition loops (esp. free-form Korean), so always set `num_predict`, cap arrays with `maxItems`, and treat JSON parse failures as `invalid` rather than crashing.
-- Embeddings: `bge-m3` (multilingual KO/JA/EN). Planned vector store Chroma (`chroma_db/`, gitignored), reusing patterns from the author's earlier RAG project (Chroma, FastAPI).
+- Embeddings: `bge-m3` (multilingual KO/JA/EN) via `ollama.embed`, passed explicitly to Chroma (Chroma's default embedding function is not used). `chroma_db/` is gitignored and rebuilt by `build_index.py`. Reuses patterns from the author's earlier RAG project (Chroma, FastAPI).
+- The judge reuses `qwen2.5vl:7b` in text mode: two 7B models don't fit in 8GB VRAM together.
 - Possible integration: the user's RamenLog app (`Mal-Mi-Jal/Ramen`, Spring Boot) plans receipt-OCR visit verification — a consumer for this project's vision model.

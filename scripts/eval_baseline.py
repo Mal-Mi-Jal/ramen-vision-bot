@@ -17,7 +17,7 @@ from pathlib import Path
 
 import ollama
 
-from test_vision import MODEL, NUM_CTX, load_resized
+from ramen_bot.vision import MODEL, NUM_CTX, load_resized
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLES_DIR = ROOT / "samples"

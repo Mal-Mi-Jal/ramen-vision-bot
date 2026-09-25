@@ -12,55 +12,12 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-import ollama
-
-from test_vision import MODEL, NUM_CTX, load_resized
+from ramen_bot.vision import FEATURES, MODEL, extract_features
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLES_DIR = ROOT / "samples"
 LABELS_CSV = ROOT / "data" / "labels.csv"
 RESULTS_DIR = ROOT / "results"
-
-FEATURES = {
-    "soup": ["yes", "no"],
-    "clarity": ["clear", "cloudy", "none"],
-    "color": ["pale_gold", "dark_brown", "light_brown", "creamy_white", "red_orange", "none"],
-    "noodle": ["thin", "medium", "thick", "unknown"],
-}
-
-# 영어로 묻는다: 7B 모델은 영어가 가장 강하고, 한국어 자유 서술은 반복 루프에 잘 빠졌다 (docs/experiments.md Before 4)
-# 라멘 지식(어떤 종류가 어떤 국물인지)은 주지 않고, 각 선택지가 "어떻게 보이는지"만 정의한다
-PROMPT = """Look at the ramen bowl in this photo. Answer ONLY about what is visible. Do not guess the ramen style.
-
-- soup: "yes" if the noodles sit in liquid broth. "no" if it is a soupless mixed-noodle dish (at most a little sauce at the bottom).
-- clarity: "clear" if the broth is transparent enough to see noodles through it. "cloudy" if the broth is opaque or milky. "none" if there is no soup.
-- color: the broth color.
-  "pale_gold" = light yellow and transparent,
-  "dark_brown" = dark soy-sauce color,
-  "light_brown" = beige or tan,
-  "creamy_white" = milky white,
-  "red_orange" = chili red or orange,
-  "none" = no soup.
-- noodle: noodle thickness. "thin" = about spaghetti thickness or thinner, "medium", "thick" = clearly thick and chewy, "unknown" = noodles are hidden."""
-
-SCHEMA = {
-    "type": "object",
-    "properties": {name: {"type": "string", "enum": options} for name, options in FEATURES.items()},
-    "required": list(FEATURES),
-}
-
-
-def extract(path: Path) -> dict:
-    response = ollama.chat(
-        model=MODEL,
-        messages=[{"role": "user", "content": PROMPT, "images": [load_resized(path, verbose=False)]}],
-        format=SCHEMA,
-        options={"num_ctx": NUM_CTX, "temperature": 0, "num_predict": 128},
-    )
-    try:
-        return json.loads(response["message"]["content"])
-    except json.JSONDecodeError:
-        return {name: "invalid" for name in FEATURES}
 
 
 def main() -> None:
@@ -70,7 +27,7 @@ def main() -> None:
     rows = []
     for i, gt in enumerate(labels, 1):
         start = time.time()
-        pred = extract(SAMPLES_DIR / gt["file"])
+        pred = extract_features(SAMPLES_DIR / gt["file"])
         elapsed = time.time() - start
         marks = " ".join(
             f"{name}={pred[name]}{'' if gt[name] == 'unknown' else ('✓' if pred[name] == gt[name] else '✗(' + gt[name] + ')')}"
