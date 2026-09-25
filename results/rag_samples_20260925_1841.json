@@ -1,0 +1,787 @@
+{
+  "summary": {
+    "samples": "samples",
+    "styles": [
+      "aburasoba",
+      "donkotsu",
+      "ieke",
+      "karai",
+      "miso",
+      "shio",
+      "shoyu",
+      "toripaitan"
+    ],
+    "accuracy": 0.7619047619047619,
+    "correct": 16,
+    "total": 21,
+    "retrieval_recall": 0.9047619047619048
+  },
+  "rows": [
+    {
+      "file": "aburasoba_1.jpg",
+      "answer": "aburasoba",
+      "features": {
+        "soup": "no",
+        "clarity": "none",
+        "color": "none",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": true
+        }
+      },
+      "query": "국물 없음, 비벼 먹는 라멘, 토핑: 큰 김, 고춧가루·고추기름",
+      "retrieved": [
+        "aburasoba#사진으로 구분하는 법 (0.355)"
+      ],
+      "reason": "Only one candidate matches soup=no.",
+      "style": "aburasoba",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/油そば"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 3.0
+    },
+    {
+      "file": "aburasoba_2.jpg",
+      "answer": "aburasoba",
+      "features": {
+        "soup": "no",
+        "clarity": "none",
+        "color": "none",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": true
+        }
+      },
+      "query": "국물 없음, 비벼 먹는 라멘, 토핑: 고춧가루·고추기름",
+      "retrieved": [
+        "aburasoba#사진으로 구분하는 법 (0.340)"
+      ],
+      "reason": "Only one candidate matches soup=no.",
+      "style": "aburasoba",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/油そば"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 3.5
+    },
+    {
+      "file": "aburasoba_3.jpg",
+      "answer": "aburasoba",
+      "features": {
+        "soup": "no",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": true,
+          "clams": false,
+          "chili": true
+        }
+      },
+      "query": "국물 없음, 비벼 먹는 라멘, 토핑: 목이버섯, 고춧가루·고추기름",
+      "retrieved": [
+        "aburasoba#사진으로 구분하는 법 (0.356)"
+      ],
+      "reason": "Only one candidate matches soup=no.",
+      "style": "aburasoba",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/油そば"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 3.7
+    },
+    {
+      "file": "donkotsu_1.jpg",
+      "answer": "donkotsu",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 토핑: 큰 김",
+      "retrieved": [
+        "toripaitan#사진으로 구분하는 법 (0.312)",
+        "ieke#사진으로 구분하는 법 (0.327)",
+        "shoyu#사진으로 구분하는 법 (0.345)",
+        "donkotsu#사진으로 구분하는 법 (0.348)",
+        "miso#사진으로 구분하는 법 (0.379)"
+      ],
+      "reason": "The observed features match the criteria for the 'ieke' style, which includes a light brown, cloudy soup, and the presence of large nori as a topping.",
+      "style": "ieke",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/家系ラーメン"
+      ],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 6.0
+    },
+    {
+      "file": "ieke_1.jpg",
+      "answer": "ieke",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "medium",
+        "toppings": {
+          "spinach": true,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 중간 굵기 면, 토핑: 시금치, 큰 김",
+      "retrieved": [
+        "ieke#사진으로 구분하는 법 (0.302)",
+        "toripaitan#사진으로 구분하는 법 (0.323)",
+        "shoyu#사진으로 구분하는 법 (0.325)",
+        "donkotsu#사진으로 구분하는 법 (0.340)",
+        "shio#사진으로 구분하는 법 (0.348)"
+      ],
+      "reason": "The observed features match the criteria for the 'ieke' style: cloudy soup, light brown color, and the presence of spinach and large nori as toppings. These are the key distinguishing features of the ieke style.",
+      "style": "ieke",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/家系ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.5
+    },
+    {
+      "file": "ieke_2.jpg",
+      "answer": "ieke",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": true,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 가는 면, 토핑: 시금치, 큰 김",
+      "retrieved": [
+        "ieke#사진으로 구분하는 법 (0.312)",
+        "toripaitan#사진으로 구분하는 법 (0.321)",
+        "shoyu#사진으로 구분하는 법 (0.326)",
+        "shio#사진으로 구분하는 법 (0.344)",
+        "donkotsu#사진으로 구분하는 법 (0.346)"
+      ],
+      "reason": "The observed features match the criteria for the 'ieke' style, specifically the cloudy, light brown soup, and the presence of spinach and large nori as toppings.",
+      "style": "ieke",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/家系ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.3
+    },
+    {
+      "file": "karai_1.jpg",
+      "answer": "karai",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thick",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": true
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 굵은 면, 토핑: 큰 김, 고춧가루·고추기름",
+      "retrieved": [
+        "ieke#사진으로 구분하는 법 (0.308)",
+        "toripaitan#사진으로 구분하는 법 (0.313)",
+        "shoyu#사진으로 구분하는 법 (0.315)",
+        "donkotsu#사진으로 구분하는 법 (0.333)",
+        "shio#사진으로 구분하는 법 (0.350)"
+      ],
+      "reason": "The observed features match the criteria for the 'ieke' style: cloudy soup, light brown color, and the presence of large nori and chili. These are the key distinguishing features of the 'ieke' ramen style.",
+      "style": "ieke",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/家系ラーメン"
+      ],
+      "correct": false,
+      "retrieval_hit": false,
+      "seconds": 5.7
+    },
+    {
+      "file": "miso_1.jpg",
+      "answer": "miso",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": true,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 토핑: 옥수수",
+      "retrieved": [
+        "shoyu#사진으로 구분하는 법 (0.338)",
+        "toripaitan#사진으로 구분하는 법 (0.339)",
+        "donkotsu#사진으로 구분하는 법 (0.342)",
+        "miso#사진으로 구분하는 법 (0.346)",
+        "ieke#사진으로 구분하는 법 (0.359)"
+      ],
+      "reason": "The observed features match the criteria for miso ramen, which includes a cloudy, light brown soup, and the presence of corn as a topping.",
+      "style": "miso",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/味噌ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.1
+    },
+    {
+      "file": "shio_1.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "투명한 맑은 국물 (청탕), 옅은 노란색·금색 국물, 가는 면",
+      "retrieved": [
+        "shio#사진으로 구분하는 법 (0.253)",
+        "shoyu#사진으로 구분하는 법 (0.272)",
+        "toripaitan#사진으로 구분하는 법 (0.344)",
+        "donkotsu#사진으로 구분하는 법 (0.349)",
+        "miso#사진으로 구분하는 법 (0.350)"
+      ],
+      "reason": "The observed features match the criteria for the shio ramen style, with a clear, pale gold-colored soup.",
+      "style": "shio",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/塩ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 4.9
+    },
+    {
+      "file": "shio_2.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "pale_gold",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": true,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 옅은 노란색·금색 국물, 토핑: 베니쇼가(붉은 초생강)",
+      "retrieved": [
+        "donkotsu#사진으로 구분하는 법 (0.298)",
+        "toripaitan#사진으로 구분하는 법 (0.325)",
+        "shoyu#사진으로 구분하는 법 (0.336)",
+        "shio#사진으로 구분하는 법 (0.369)",
+        "ieke#사진으로 구분하는 법 (0.375)"
+      ],
+      "reason": "The observed soup is cloudy and pale gold in color, which matches the description of the shio ramen style. The presence of red pickled ginger also aligns with the typical toppings of shio ramen.",
+      "style": "shio",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/塩ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.2
+    },
+    {
+      "file": "shio_3.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": true,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": true,
+          "chili": false
+        }
+      },
+      "query": "투명한 맑은 국물 (청탕), 옅은 노란색·금색 국물, 가는 면, 토핑: 숙주, 조개",
+      "retrieved": [
+        "shoyu#사진으로 구분하는 법 (0.314)",
+        "shio#사진으로 구분하는 법 (0.314)",
+        "miso#사진으로 구분하는 법 (0.359)",
+        "donkotsu#사진으로 구분하는 법 (0.360)",
+        "toripaitan#사진으로 구분하는 법 (0.379)"
+      ],
+      "reason": "The observed soup is clear and pale gold in color, which matches the description of the shio ramen style. The presence of bean sprouts and clams also aligns with the typical toppings of shio ramen.",
+      "style": "shio",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/塩ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.7
+    },
+    {
+      "file": "shio_4.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "light_brown",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": true,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": true,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 연갈색·베이지색 국물, 가는 면, 토핑: 큰 김, 숙주, 조개",
+      "retrieved": [
+        "ieke#사진으로 구분하는 법 (0.337)",
+        "toripaitan#사진으로 구분하는 법 (0.339)",
+        "shoyu#사진으로 구분하는 법 (0.348)",
+        "donkotsu#사진으로 구분하는 법 (0.354)",
+        "miso#사진으로 구분하는 법 (0.376)"
+      ],
+      "reason": "The observed features match the criteria for the 'ieke' style, particularly the cloudy, light brown soup, and the presence of large nori and bean sprouts as toppings.",
+      "style": "ieke",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/家系ラーメン"
+      ],
+      "correct": false,
+      "retrieval_hit": false,
+      "seconds": 5.3
+    },
+    {
+      "file": "shio_5.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "투명한 맑은 국물 (청탕), 옅은 노란색·금색 국물, 가는 면",
+      "retrieved": [
+        "shio#사진으로 구분하는 법 (0.253)",
+        "shoyu#사진으로 구분하는 법 (0.272)",
+        "toripaitan#사진으로 구분하는 법 (0.344)",
+        "donkotsu#사진으로 구분하는 법 (0.349)",
+        "miso#사진으로 구분하는 법 (0.350)"
+      ],
+      "reason": "The observed soup is clear and pale gold, which matches the description of shio ramen. The thin noodles and lack of toppings are also consistent with shio ramen.",
+      "style": "shio",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/塩ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.2
+    },
+    {
+      "file": "shio_6.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "투명한 맑은 국물 (청탕), 옅은 노란색·금색 국물, 가는 면, 토핑: 큰 김",
+      "retrieved": [
+        "shio#사진으로 구분하는 법 (0.290)",
+        "shoyu#사진으로 구분하는 법 (0.294)",
+        "toripaitan#사진으로 구분하는 법 (0.343)",
+        "ieke#사진으로 구분하는 법 (0.344)",
+        "miso#사진으로 구분하는 법 (0.350)"
+      ],
+      "reason": "The observed features match the criteria for shio ramen: clear and pale gold soup, thin noodles, and the presence of large nori as a topping.",
+      "style": "shio",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/塩ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.1
+    },
+    {
+      "file": "shio_7.jpg",
+      "answer": "shio",
+      "features": {
+        "soup": "yes",
+        "clarity": "clear",
+        "color": "pale_gold",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "투명한 맑은 국물 (청탕), 옅은 노란색·금색 국물, 가는 면",
+      "retrieved": [
+        "shio#사진으로 구분하는 법 (0.253)",
+        "shoyu#사진으로 구분하는 법 (0.272)",
+        "toripaitan#사진으로 구분하는 법 (0.344)",
+        "donkotsu#사진으로 구분하는 법 (0.349)",
+        "miso#사진으로 구분하는 법 (0.350)"
+      ],
+      "reason": "The observed soup is clear and pale gold, which matches the description of shio ramen. The thin noodles and lack of toppings are also consistent with shio ramen.",
+      "style": "shio",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/塩ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 4.9
+    },
+    {
+      "file": "shoyu_1.jpg",
+      "answer": "shoyu",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "medium",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": true,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 진한 갈색 간장색 국물, 중간 굵기 면, 토핑: 숙주",
+      "retrieved": [
+        "shoyu#사진으로 구분하는 법 (0.315)",
+        "ieke#사진으로 구분하는 법 (0.348)",
+        "toripaitan#사진으로 구분하는 법 (0.348)",
+        "donkotsu#사진으로 구분하는 법 (0.364)",
+        "miso#사진으로 구분하는 법 (0.368)"
+      ],
+      "reason": "The observed features match the criteria for shoyu ramen, with a dark brown color, cloudy clarity, and bean sprouts as toppings.",
+      "style": "shoyu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/醤油ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.4
+    },
+    {
+      "file": "shoyu_2.jpg",
+      "answer": "shoyu",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": true,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 진한 갈색 간장색 국물, 토핑: 시금치",
+      "retrieved": [
+        "shoyu#사진으로 구분하는 법 (0.295)",
+        "toripaitan#사진으로 구분하는 법 (0.315)",
+        "ieke#사진으로 구분하는 법 (0.336)",
+        "shio#사진으로 구분하는 법 (0.343)",
+        "donkotsu#사진으로 구분하는 법 (0.351)"
+      ],
+      "reason": "The observed features match the criteria for shoyu ramen, which has a dark brown color, cloudy clarity, and no toppings other than spinach.",
+      "style": "shoyu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/醤油ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.2
+    },
+    {
+      "file": "shoyu_3.jpg",
+      "answer": "shoyu",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "thin",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 진한 갈색 간장색 국물, 가는 면",
+      "retrieved": [
+        "shoyu#사진으로 구분하는 법 (0.296)",
+        "toripaitan#사진으로 구분하는 법 (0.333)",
+        "shio#사진으로 구분하는 법 (0.338)",
+        "ieke#사진으로 구분하는 법 (0.367)",
+        "donkotsu#사진으로 구분하는 법 (0.376)"
+      ],
+      "reason": "The observed features match the criteria for shoyu ramen, which has a dark brown color, cloudy clarity, and no visible toppings.",
+      "style": "shoyu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/醤油ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.2
+    },
+    {
+      "file": "shoyu_4.jpg",
+      "answer": "shoyu",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "dark_brown",
+        "noodle": "thick",
+        "toppings": {
+          "spinach": false,
+          "large_nori": true,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 진한 갈색 간장색 국물, 굵은 면, 토핑: 큰 김",
+      "retrieved": [
+        "shoyu#사진으로 구분하는 법 (0.316)",
+        "toripaitan#사진으로 구분하는 법 (0.325)",
+        "ieke#사진으로 구분하는 법 (0.334)",
+        "shio#사진으로 구분하는 법 (0.360)",
+        "donkotsu#사진으로 구분하는 법 (0.365)"
+      ],
+      "reason": "The observed features match the criteria for the shoyu ramen style, with a dark brown color, cloudy clarity, and the presence of large nori as a topping.",
+      "style": "shoyu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/醤油ラーメン"
+      ],
+      "correct": true,
+      "retrieval_hit": true,
+      "seconds": 5.4
+    },
+    {
+      "file": "toripaitan_1.jpg",
+      "answer": "toripaitan",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "creamy_white",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": true,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 뽀얀 우윳빛 크림색 국물, 토핑: 베니쇼가(붉은 초생강)",
+      "retrieved": [
+        "donkotsu#사진으로 구분하는 법 (0.302)",
+        "toripaitan#사진으로 구분하는 법 (0.320)",
+        "shoyu#사진으로 구분하는 법 (0.358)",
+        "shio#사진으로 구분하는 법 (0.392)",
+        "miso#사진으로 구분하는 법 (0.394)"
+      ],
+      "reason": "The observed features match the criteria for donkotsu ramen, with a creamy white, cloudy soup and the presence of red pickled ginger as a topping.",
+      "style": "donkotsu",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/豚骨ラーメン",
+        "https://ramen-battle.com/648/"
+      ],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 5.1
+    },
+    {
+      "file": "toripaitan_2.jpg",
+      "answer": "toripaitan",
+      "features": {
+        "soup": "yes",
+        "clarity": "cloudy",
+        "color": "pale_gold",
+        "noodle": "unknown",
+        "toppings": {
+          "spinach": false,
+          "large_nori": false,
+          "corn": false,
+          "bean_sprouts": false,
+          "butter": false,
+          "red_pickled_ginger": false,
+          "wood_ear": false,
+          "clams": false,
+          "chili": false
+        }
+      },
+      "query": "탁하고 불투명한 국물 (백탕), 옅은 노란색·금색 국물",
+      "retrieved": [
+        "toripaitan#사진으로 구분하는 법 (0.300)",
+        "shoyu#사진으로 구분하는 법 (0.317)",
+        "shio#사진으로 구분하는 법 (0.330)",
+        "donkotsu#사진으로 구분하는 법 (0.360)",
+        "ieke#사진으로 구분하는 법 (0.361)"
+      ],
+      "reason": "The observed soup is cloudy and pale gold in color, which matches the description of the shio ramen style. The other styles either have different clarity or color, making shio the most suitable match.",
+      "style": "shio",
+      "sources": [
+        "https://ja.wikipedia.org/wiki/塩ラーメン"
+      ],
+      "correct": false,
+      "retrieval_hit": true,
+      "seconds": 5.4
+    }
+  ]
+}

@@ -42,6 +42,11 @@ def load_chunks() -> list[dict]:
     return chunks
 
 
+def available_styles() -> set[str]:
+    """지식 문서가 있는 라멘 종류 목록. 문서가 없는 종류는 판단 후보가 될 수 없다."""
+    return {c["style"] for c in load_chunks()} - {"basics"}
+
+
 def embed(texts: list[str]) -> list[list[float]]:
     return ollama.embed(model=EMBED_MODEL, input=texts)["embeddings"]
 

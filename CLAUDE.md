@@ -10,7 +10,9 @@ Target hardware: RTX 3060 Ti, **8GB VRAM**. Keep models ~≤8B at 4-bit; only on
 
 ## Status
 
-Working RAG pipeline for photo → style (57% on our 23 photos vs 17% VLM-only; see `docs/experiments.md` 실험 6). No app/UI or tests yet.
+Working RAG pipeline for photo → style over **8 styles** (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba): 76% on our 21 photos vs 17% VLM-only (`docs/experiments.md` 실험 6–7). No app/UI or tests yet.
+
+Scope: shoyupaitan was dropped on purpose (user: not a major style). The set of styles = the `knowledge/*.md` docs; `eval_rag.py` skips photos whose label has no doc (`knowledge.available_styles()`), so `samples/shoyupaitan_*.jpg` stay on disk but aren't graded.
 
 Core logic lives in the `ramen_bot/` package (installed editable via `-e .` in requirements.txt, so scripts can `import ramen_bot` from anywhere):
 - `vision.py`: `MODEL`, `NUM_CTX`, `load_resized()`, `extract_features()` — VLM returns only visible features (soup / clarity / color / noodle enums + a yes/no `TOPPINGS` checklist). Never ask it for the style.
@@ -22,10 +24,10 @@ Scripts (run from repo root):
 - `scripts/eval_baseline.py`: classifies every `samples/*.jpg` (label = filename prefix, e.g. `shio_3.jpg` → `shio`), writes `results/baseline_<variant>_<timestamp>.json`. Baseline accuracy: 17% (label-first), 4% (`--reason-first`) — details in `docs/experiments.md`.
 - `scripts/eval_features.py`: asks the VLM only visible features (soup / clarity / color / noodle) as English enums and grades against `data/labels.csv` (hand-labeled; `noodle=unknown` rows are skipped). Result: soup 100%, clarity 74%, color 78%, noodle 47%. This "VLM sees, RAG judges" split is the chosen direction.
 - `scripts/build_index.py ["검색어"]`: rebuild Chroma from `knowledge/` (required after any doc edit); optional query prints top hits.
-- `scripts/eval_rag.py`: full pipeline over `samples/`, reports accuracy + retrieval recall (was the true style among candidates), writes `results/rag_<timestamp>.json`.
+- `scripts/eval_rag.py [--samples DIR]`: full pipeline over `samples/` (or DIR), reports accuracy + retrieval recall (was the true style among candidates), writes `results/rag_<timestamp>.json`.
 - `knowledge/*.md`: RAG source docs, one per style (filename = style label) plus `00_soup_basics.md` (清湯 vs 白湯). YAML frontmatter: `style`, `visual` (same enum vocabulary as `vision.py`), `sources`. Sections the pipeline depends on by exact heading: "사진으로 구분하는 법" (only the style's own positive cues, phrased in the same Korean words as `judge.KO` — comparisons here turned docs into retrieval "hubs") and "비슷한 종류와 구분" (comparisons). Keep sourced facts out of "프로젝트 관찰".
 - Known weak spots (don't re-discover): VLM calls dark shoyu broth "cloudy"; judge picks ieke from nori alone; embeddings ignore negation ("국물 없음") — that's why soup is a metadata filter.
-- The 23 photos were used for tuning v1→v3, so they are no longer a clean test set; a held-out photo set is the next evaluation need.
+- The photos in `samples/` were used for tuning v1→v3, so they are no longer a clean test set; a held-out photo set is the next evaluation need.
 - `data/labels.csv` `note` column marks edge cases the user confirmed (e.g. shio_2 chicken-heavy, shio_4 clam broth looks amber).
 
 `samples/` is gitignored: the user's photos contain GPS EXIF. Never commit originals; make EXIF-stripped, downscaled copies if images are needed in the repo.
@@ -39,7 +41,7 @@ python scripts/test_vision.py samples/shio_1.jpg    # VLM smoke test
 python scripts/eval_baseline.py [--reason-first]    # style accuracy over all samples (~1–4 min)
 python scripts/eval_features.py                     # visual-feature accuracy vs data/labels.csv (~30 s)
 python scripts/build_index.py                       # rebuild Chroma after editing knowledge/
-python scripts/eval_rag.py                          # full RAG pipeline accuracy (~2 min)
+python scripts/eval_rag.py [--samples samples_test] # full RAG pipeline accuracy (~2 min); --samples = held-out folder
 ollama list                                         # models: qwen2.5vl:7b (vision), bge-m3 (embeddings)
 ```
 
