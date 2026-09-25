@@ -8,9 +8,9 @@ ieke_2.jpg,ieke,yes,cloudy,light_brown,thick,
 karai_1.jpg,karai,yes,cloudy,red_orange,thin,
 miso_1.jpg,miso,yes,cloudy,light_brown,unknown,
 shio_1.jpg,shio,yes,clear,pale_gold,thin,
-shio_2.jpg,shio,yes,cloudy,pale_gold,thin,확인 필요: 노랗고 약간 탁해 보임 (닭 육수?)
+shio_2.jpg,shio,yes,cloudy,pale_gold,thin,경계 사례: 라무라 - 삼계탕 같은 닭 육수라 시오로 분류했지만 애매함
 shio_3.jpg,shio,yes,clear,pale_gold,thin,
-shio_4.jpg,shio,yes,clear,dark_brown,thin,확인 필요: 시오인데 국물이 호박색/갈색으로 보임 (조개 육수?)
+shio_4.jpg,shio,yes,clear,dark_brown,thin,경계 사례: 사루카메 바지락 라멘 - 조개 육수라 시오지만 국물이 호박색
 shio_5.jpg,shio,yes,clear,pale_gold,thin,
 shio_6.jpg,shio,yes,clear,pale_gold,thin,
 shio_7.jpg,shio,yes,clear,pale_gold,thin,
@@ -19,6 +19,6 @@ shoyu_2.jpg,shoyu,yes,clear,dark_brown,unknown,
 shoyu_3.jpg,shoyu,yes,clear,dark_brown,thin,
 shoyu_4.jpg,shoyu,yes,clear,dark_brown,thin,
 shoyupaitan_1.jpg,shoyupaitan,yes,cloudy,light_brown,unknown,
-shoyupaitan_2.jpg,shoyupaitan,yes,cloudy,light_brown,unknown,확인 필요: 금색에 가까움
+shoyupaitan_2.jpg,shoyupaitan,yes,cloudy,light_brown,unknown,라멘구락부 - 금색에 가까움 (보류)
 toripaitan_1.jpg,toripaitan,yes,cloudy,creamy_white,unknown,
 toripaitan_2.jpg,toripaitan,yes,cloudy,creamy_white,unknown,

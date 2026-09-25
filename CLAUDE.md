@@ -13,7 +13,9 @@ Target hardware: RTX 3060 Ti, **8GB VRAM**. Keep models ~≤8B at 4-bit; only on
 Early stage — scripts only, no app, RAG pipeline, or tests yet.
 - `scripts/test_vision.py`: single-image VLM smoke test; also holds shared `MODEL`, `NUM_CTX`, `load_resized()` (imported by other scripts, so run scripts from repo root as `python scripts/<name>.py`).
 - `scripts/eval_baseline.py`: classifies every `samples/*.jpg` (label = filename prefix, e.g. `shio_3.jpg` → `shio`), writes `results/baseline_<variant>_<timestamp>.json`. Baseline accuracy: 17% (label-first), 4% (`--reason-first`) — details in `docs/experiments.md`.
-- `scripts/eval_features.py`: asks the VLM only visible features (soup / clarity / color / noodle) as English enums and grades against `data/labels.csv` (hand-labeled; `noodle=unknown` rows are skipped). Result: soup 100%, clarity 74%, color 78%, noodle 47%. This "VLM sees, RAG judges" split is the chosen direction; next is the RAG knowledge docs.
+- `scripts/eval_features.py`: asks the VLM only visible features (soup / clarity / color / noodle) as English enums and grades against `data/labels.csv` (hand-labeled; `noodle=unknown` rows are skipped). Result: soup 100%, clarity 74%, color 78%, noodle 47%. This "VLM sees, RAG judges" split is the chosen direction.
+- `knowledge/*.md`: RAG source docs, one per style (filename = style label) plus `00_soup_basics.md` (清湯 vs 白湯). Each has YAML frontmatter (`style`, `visual` using the same enum vocabulary as `eval_features.py`, `sources` URLs) and a "사진으로 구분하는 법" section. Keep sourced facts separate from the "프로젝트 관찰" section (observations from our own photos/evals). Next step: embed these with `bge-m3` into Chroma and have the VLM features + retrieved docs decide the style.
+- `data/labels.csv` `note` column marks edge cases the user confirmed (e.g. shio_2 chicken-heavy, shio_4 clam broth looks amber).
 
 `samples/` is gitignored: the user's photos contain GPS EXIF. Never commit originals; make EXIF-stripped, downscaled copies if images are needed in the repo.
 
