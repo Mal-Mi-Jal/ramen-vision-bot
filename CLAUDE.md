@@ -60,6 +60,13 @@ Environment gotchas:
 - **Images must be downscaled before sending to the VLM.** Qwen2.5-VL spends ~1 token per 28×28px patch; a 4000×3000 phone photo overflows Ollama's default 4096 context. Resize to long side 1024px (`MAX_SIDE`) and pass `options={"num_ctx": 8192}`.
 - **Separate "seeing" from "judging".** Baseline showed the 7B VLM detects objects reasonably but hallucinates ramen type and even non-existent soup (see `docs/experiments.md`). Implemented in `ramen_bot/` (see Status).
 - **Structured Output guards for the 7B VLM:** it falls into repetition loops (esp. free-form Korean), so always set `num_predict`, cap arrays with `maxItems`, and treat JSON parse failures as `invalid` rather than crashing.
-- Embeddings: `bge-m3` (multilingual KO/JA/EN) via `ollama.embed`, passed explicitly to Chroma (Chroma's default embedding function is not used). `chroma_db/` is gitignored and rebuilt by `build_index.py`. Reuses patterns from the author's earlier RAG project (Chroma, FastAPI).
+- Embeddings: `bge-m3` (multilingual KO/JA/EN) via `ollama.embed`, passed explicitly to Chroma (Chroma's default embedding function is not used). `chroma_db/` is gitignored and rebuilt by `build_index.py`. Reuses patterns (Chroma, FastAPI) from the author's earlier RAG project.
 - The judge reuses `qwen2.5vl:7b` in text mode: two 7B models don't fit in 8GB VRAM together.
 - Possible integration: the user's RamenLog app (`Mal-Mi-Jal/Ramen`, Spring Boot) plans receipt-OCR visit verification — a consumer for this project's vision model.
+
+## Conventions
+
+- Code comments are in Korean.
+- Log each new Before/After result or notable error in `docs/experiments.md`.
+- For knowledge docs, fetch real sources and cite them; do not write ramen facts from memory.
+- Personal working preferences live in `CLAUDE.local.md` (gitignored).

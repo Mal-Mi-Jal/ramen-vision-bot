@@ -18,3 +18,6 @@ samples/
 
 # 테스트 사진(위키미디어 공용): 저작자 표시가 필요해서 사진은 올리지 않고 출처 목록(data/test_sources.csv)만 커밋
 samples_test/
+
+# 개인 작업 메모 (Claude Code가 자동으로 읽지만 공개하지 않음)
+CLAUDE.local.md
