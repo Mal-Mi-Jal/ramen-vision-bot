@@ -10,7 +10,7 @@ Target hardware: RTX 3060 Ti, **8GB VRAM**. Keep models ~≤8B at 4-bit; only on
 
 ## Status
 
-Working RAG pipeline for photo → style over **8 styles** (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba): on the **held-out** Wikimedia set (`samples_test/`, 25 photos) RAG = 60% vs VLM-only 28%; on the tuning set (`samples/`, 21 photos) 76% (`docs/experiments.md` 실험 6–8). No app/UI or tests yet.
+Working RAG pipeline for photo → style over **8 styles** (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba): on the **held-out** Wikimedia set (`samples_test/`, 25 photos) RAG = 60% vs VLM-only 28%; on the tuning set (`samples/`, 21 photos) 76% (`docs/experiments.md` 실험 6–8). A local FastAPI demo (`web/index.html`) exists; no automated tests yet. `.claude/launch.json` has a `ramen-demo` entry for the browser preview.
 
 Evaluation discipline: tune only against `samples/`; use `samples_test/` for final checks only (tuning on it would require a new held-out set). `samples_test/` holds CC-licensed Wikimedia Commons photos (gitignored; attribution/license per file in `data/test_sources.csv` — keep that file in sync if photos change). Known held-out weakness: cloudy-but-yellowish broth (real tori paitan, some ieke) gets `pale_gold` and the judge picks shio, ignoring `clarity`.
 
@@ -19,6 +19,8 @@ Scope: shoyupaitan was dropped on purpose (user: not a major style). The set of 
 Core logic lives in the `ramen_bot/` package (installed editable via `-e .` in requirements.txt, so scripts can `import ramen_bot` from anywhere):
 - `vision.py`: `MODEL`, `NUM_CTX`, `load_resized()`, `extract_features()` — VLM returns only visible features (soup / clarity / color / noodle enums + a yes/no `TOPPINGS` checklist). Never ask it for the style.
 - `knowledge.py`: splits `knowledge/*.md` into `## ` sections, embeds with `bge-m3` via Ollama, stores in Chroma (`chroma_db/`). Metadata per chunk: `style`, `heading`, `sources`, `soup` (from frontmatter). Chunk id = `<style>#<heading>`. "프로젝트 관찰" sections are excluded (they describe the test photos → data leakage).
+- `answer.py`: `explain(result)` turns a judge result into the Korean display payload by **assembling knowledge-doc sections** (요약 / 사진으로 구분하는 법 / 유래) — no LLM-written Korean (7B loops/hallucinates in free Korean). Strips the internal `soup=…, color=…` codes from doc text.
+- `api.py`: FastAPI demo. `GET /` serves `web/index.html`; `POST /api/identify` (multipart `file`) → `explain()` payload + `features` + `seconds`. Sync `def` endpoint on purpose (runs in threadpool). Uploads go to a temp file (`delete=False` for Windows) and are deleted after.
 - `judge.py`: features → Korean query → **hybrid retrieval** (metadata filter on `soup` + vector search over only the "사진으로 구분하는 법" sections, k=5) → candidates' criteria + "비슷한 종류와 구분" sections → LLM picks a style from the candidate enum. Sources are attached by code from the chosen style's doc, not written by the LLM. One candidate → no LLM call.
 
 Scripts (run from repo root):
@@ -42,6 +44,7 @@ pip install -r requirements.txt
 python scripts/test_vision.py samples/shio_1.jpg    # VLM smoke test
 python scripts/eval_baseline.py [--reason-first]    # style accuracy over all samples (~1–4 min)
 python scripts/eval_features.py                     # visual-feature accuracy vs data/labels.csv (~30 s)
+uvicorn ramen_bot.api:app --port 8000               # demo web app at http://localhost:8000 (needs chroma_db built; restart after Python edits)
 python scripts/build_index.py                       # rebuild Chroma after editing knowledge/
 python scripts/eval_rag.py [--samples samples_test] # full RAG pipeline accuracy (~2 min); --samples = held-out folder
 ollama list                                         # models: qwen2.5vl:7b (vision), bge-m3 (embeddings)

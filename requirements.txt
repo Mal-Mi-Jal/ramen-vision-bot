@@ -2,4 +2,7 @@ ollama
 pillow
 chromadb
 pyyaml
+fastapi
+uvicorn
+python-multipart
 -e .
