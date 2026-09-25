@@ -15,3 +15,6 @@ samples/
 
 # pip install -e . 가 만드는 설치 정보
 *.egg-info/
+
+# 테스트 사진(위키미디어 공용): 저작자 표시가 필요해서 사진은 올리지 않고 출처 목록(data/test_sources.csv)만 커밋
+samples_test/

@@ -10,7 +10,9 @@ Target hardware: RTX 3060 Ti, **8GB VRAM**. Keep models ~≤8B at 4-bit; only on
 
 ## Status
 
-Working RAG pipeline for photo → style over **8 styles** (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba): 76% on our 21 photos vs 17% VLM-only (`docs/experiments.md` 실험 6–7). No app/UI or tests yet.
+Working RAG pipeline for photo → style over **8 styles** (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba): on the **held-out** Wikimedia set (`samples_test/`, 25 photos) RAG = 60% vs VLM-only 28%; on the tuning set (`samples/`, 21 photos) 76% (`docs/experiments.md` 실험 6–8). No app/UI or tests yet.
+
+Evaluation discipline: tune only against `samples/`; use `samples_test/` for final checks only (tuning on it would require a new held-out set). `samples_test/` holds CC-licensed Wikimedia Commons photos (gitignored; attribution/license per file in `data/test_sources.csv` — keep that file in sync if photos change). Known held-out weakness: cloudy-but-yellowish broth (real tori paitan, some ieke) gets `pale_gold` and the judge picks shio, ignoring `clarity`.
 
 Scope: shoyupaitan was dropped on purpose (user: not a major style). The set of styles = the `knowledge/*.md` docs; `eval_rag.py` skips photos whose label has no doc (`knowledge.available_styles()`), so `samples/shoyupaitan_*.jpg` stay on disk but aren't graded.
 
@@ -27,7 +29,7 @@ Scripts (run from repo root):
 - `scripts/eval_rag.py [--samples DIR]`: full pipeline over `samples/` (or DIR), reports accuracy + retrieval recall (was the true style among candidates), writes `results/rag_<timestamp>.json`.
 - `knowledge/*.md`: RAG source docs, one per style (filename = style label) plus `00_soup_basics.md` (清湯 vs 白湯). YAML frontmatter: `style`, `visual` (same enum vocabulary as `vision.py`), `sources`. Sections the pipeline depends on by exact heading: "사진으로 구분하는 법" (only the style's own positive cues, phrased in the same Korean words as `judge.KO` — comparisons here turned docs into retrieval "hubs") and "비슷한 종류와 구분" (comparisons). Keep sourced facts out of "프로젝트 관찰".
 - Known weak spots (don't re-discover): VLM calls dark shoyu broth "cloudy"; judge picks ieke from nori alone; embeddings ignore negation ("국물 없음") — that's why soup is a metadata filter.
-- The photos in `samples/` were used for tuning v1→v3, so they are no longer a clean test set; a held-out photo set is the next evaluation need.
+- `scripts/eval_baseline.py [--samples DIR]` now offers 8 styles (shoyupaitan removed), so its numbers aren't directly comparable to the 9-style 17% in 실험 4.
 - `data/labels.csv` `note` column marks edge cases the user confirmed (e.g. shio_2 chicken-heavy, shio_4 clam broth looks amber).
 
 `samples/` is gitignored: the user's photos contain GPS EXIF. Never commit originals; make EXIF-stripped, downscaled copies if images are needed in the repo.

@@ -6,6 +6,7 @@
 사용법:
     python scripts/eval_baseline.py                  # label을 먼저 답하게 함
     python scripts/eval_baseline.py --reason-first   # 관찰·근거를 먼저 쓰고 label은 마지막에
+    python scripts/eval_baseline.py --samples samples_test   # 다른 폴더
 """
 import argparse
 import json
@@ -20,7 +21,6 @@ import ollama
 from ramen_bot.vision import MODEL, NUM_CTX, load_resized
 
 ROOT = Path(__file__).resolve().parent.parent
-SAMPLES_DIR = ROOT / "samples"
 RESULTS_DIR = ROOT / "results"
 
 # 파일 이름 라벨 -> 모델에게 보여줄 이름. 종류 이름만 주고 특징 설명은 주지 않는다 (지식 없이 모델 실력만 측정)
@@ -31,7 +31,7 @@ LABELS = {
     "donkotsu": "돈코츠 (豚骨)",
     "ieke": "이에케 (家系)",
     "toripaitan": "토리파이탄 (鶏白湯)",
-    "shoyupaitan": "쇼유파이탄 (醤油白湯)",
+    # shoyupaitan은 범위에서 제외 (실험 7). 실험 4의 17%는 shoyupaitan을 포함한 9종류 기준
     "karai": "카라이/매운 라멘 (辛いラーメン)",
     "aburasoba": "아부라소바/마제소바 (油そば・まぜそば)",
 }
@@ -92,14 +92,16 @@ def classify(path: Path, schema: dict) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--reason-first", action="store_true", help="관찰·근거를 먼저, label을 마지막에 출력")
+    parser.add_argument("--samples", default="samples", help="채점할 사진 폴더 (기본: samples)")
     args = parser.parse_args()
     schema = reason_first(SCHEMA) if args.reason_first else SCHEMA
     variant = "reason_first" if args.reason_first else "label_first"
 
-    images = sorted(SAMPLES_DIR.glob("*.jpg"))
-    unknown = {true_label(p) for p in images} - set(LABELS)
-    if unknown:
-        raise SystemExit(f"LABELS에 없는 라벨이 있어요: {unknown}")
+    all_images = sorted((ROOT / args.samples).glob("*.jpg"))
+    images = [p for p in all_images if true_label(p) in LABELS]
+    skipped = sorted({true_label(p) for p in all_images} - set(LABELS))
+    if skipped:
+        print(f"LABELS에 없어 건너뛰는 종류: {skipped} ({len(all_images) - len(images)}장)\n")
 
     rows = []
     for i, path in enumerate(images, 1):
@@ -126,7 +128,7 @@ def main() -> None:
     print(f"평균 소요 시간: {sum(r['seconds'] for r in rows) / len(rows):.1f}초")
 
     RESULTS_DIR.mkdir(exist_ok=True)
-    out = RESULTS_DIR / f"baseline_{variant}_{datetime.now():%Y%m%d_%H%M}.json"
+    out = RESULTS_DIR / f"baseline_{variant}_{args.samples}_{datetime.now():%Y%m%d_%H%M}.json"
     summary = {
         "model": MODEL,
         "variant": variant,

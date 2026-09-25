@@ -1,0 +1,453 @@
+{
+  "summary": {
+    "model": "qwen2.5vl:7b",
+    "variant": "label_first",
+    "accuracy": 0.28,
+    "correct": 7,
+    "total": 25
+  },
+  "rows": [
+    {
+      "file": "aburasoba_1.jpg",
+      "answer": "aburasoba",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "파",
+        "마늘",
+        "파래",
+        "미역",
+        "돼지고기",
+        "소금"
+      ],
+      "reason": "국물이 있고, 면이 가는 면으로 보이며, 파, 마늘, 파래, 미역, 돼지고기, 소금 등 다양한 토핑이 보입니다. 이는 일반적으로 일본의 가정식 라멘 스타일인 '이에케' 라멘을 연상시킵니다.",
+      "correct": false,
+      "seconds": 4.0
+    },
+    {
+      "file": "aburasoba_2.jpg",
+      "answer": "aburasoba",
+      "label": "ieke",
+      "soup": false,
+      "soup_color": "없음",
+      "noodle": "가는 면",
+      "toppings": [
+        "김치",
+        "김",
+        "파",
+        "돼지고기",
+        "마늘"
+      ],
+      "reason": "이 라멘은 면 위에 김치와 김, 파, 돼지고기, 마늘 등이 올려져 있으며, 면의 굵기와 면의 형태로 '가는 면'으로 보입니다. 또한, 국물이 없어 '비빔면'으로 보이며, 면 위에 다양한 토핑이 올려져 있어 '이에케'로 추정됩니다.",
+      "correct": false,
+      "seconds": 4.5
+    },
+    {
+      "file": "aburasoba_3.jpg",
+      "answer": "aburasoba",
+      "label": "ieke",
+      "soup": false,
+      "soup_color": "없음",
+      "noodle": "가는 면",
+      "toppings": [
+        "알밥",
+        "알가루",
+        "파래",
+        "참치",
+        "미역"
+      ],
+      "reason": "알밥, 알가루, 파래, 참치, 미역 등 다양한 토핑이 보이며, 면의 굵기와 알밥의 형태로 '가정식' 라멘인 '이에케'로 추정됩니다.",
+      "correct": false,
+      "seconds": 3.5
+    },
+    {
+      "file": "aburasoba_4.jpg",
+      "answer": "aburasoba",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "알고기",
+        "알",
+        "김",
+        "미역",
+        "참기름",
+        "양파",
+        "다진 양파",
+        "양파 조각"
+      ],
+      "reason": "국물이 진한 갈색으로 보이며, 면은 가는 면으로 보이며, 토핑으로는 알고기, 알, 김, 미역, 참기름, 양파, 다진 양파, 양파 조각 등이 보입니다.",
+      "correct": false,
+      "seconds": 4.5
+    },
+    {
+      "file": "donkotsu_1.jpg",
+      "answer": "donkotsu",
+      "label": "shio",
+      "soup": true,
+      "soup_color": "뽀얀 흰색",
+      "noodle": "가는 면",
+      "toppings": [
+        "김",
+        "돼지고기",
+        "계란",
+        "파"
+      ],
+      "reason": "국물이 투명하고 뽀얀 흰색이며, 면은 가는 면으로 보이며, 김, 돼지고기, 계란, 파가 토핑으로 보입니다.",
+      "correct": false,
+      "seconds": 3.3
+    },
+    {
+      "file": "ieke_1.jpg",
+      "answer": "ieke",
+      "label": "shio",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "돼지고기",
+        "김",
+        "깻잎"
+      ],
+      "reason": "국물이 투명하고 면이 가는 면으로 보이며, 돼지고기와 김, 깻잎이 토핑으로 보입니다.",
+      "correct": false,
+      "seconds": 2.8
+    },
+    {
+      "file": "ieke_2.jpg",
+      "answer": "ieke",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "알",
+        "돼지고기",
+        "깻잎",
+        "금箔"
+      ],
+      "reason": "이 라멘은 금箔이 들어가 있고, 돼지고기와 알, 그리고 깻잎이 보이는 것으로, 이에케 라멘의 특징을 가지고 있습니다.",
+      "correct": true,
+      "seconds": 3.1
+    },
+    {
+      "file": "ieke_3.jpg",
+      "answer": "ieke",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "연한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "돼지고기",
+        "국물",
+        "파래",
+        "김"
+      ],
+      "reason": "국물이 연한 갈색이고, 돼지고기가 보이며, 김이 올려져 있어 전형적인 쇼유 라멘의 특징을 보입니다.",
+      "correct": false,
+      "seconds": 3.1
+    },
+    {
+      "file": "ieke_4.jpg",
+      "answer": "ieke",
+      "label": "shio",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "알",
+        "파래",
+        "김",
+        "육회"
+      ],
+      "reason": "국물이 투명하고, 면은 가는 면으로 보이며, 알, 파래, 김, 육회가 토핑으로 보입니다. 이는 시오 라멘의 특징과 일치합니다.",
+      "correct": false,
+      "seconds": 3.3
+    },
+    {
+      "file": "karai_1.jpg",
+      "answer": "karai",
+      "label": "karai",
+      "soup": true,
+      "soup_color": "붉은색",
+      "noodle": "가는 면",
+      "toppings": [
+        "채소",
+        "소스"
+      ],
+      "reason": "국물이 붉은색이며, 면 위에 채소와 소스가 올려져 있어 매운 라멘임을 알 수 있습니다.",
+      "correct": true,
+      "seconds": 2.7
+    },
+    {
+      "file": "karai_2.jpg",
+      "answer": "karai",
+      "label": "toripaitan",
+      "soup": true,
+      "soup_color": "붉은색",
+      "noodle": "가는 면",
+      "toppings": [
+        "야채",
+        "소스"
+      ],
+      "reason": "국물이 붉은색이며, 면 위에 야채와 소스가 올려져 있어 토리파이탄 라멘의 특징을 보여줍니다.",
+      "correct": false,
+      "seconds": 2.9
+    },
+    {
+      "file": "miso_1.jpg",
+      "answer": "miso",
+      "label": "donkotsu",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "육회",
+        "알",
+        "파",
+        "김"
+      ],
+      "reason": "육회와 알이 보이는 돈코츠 라멘으로, 국물이 진한 갈색이며 면은 가는 면으로 보입니다.",
+      "correct": false,
+      "seconds": 2.9
+    },
+    {
+      "file": "miso_2.jpg",
+      "answer": "miso",
+      "label": "shio",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "고기",
+        "버터",
+        "야채",
+        "알코올"
+      ],
+      "reason": "국물이 투명하고, 면은 가는 면으로 보이며, 고기와 버터, 야채가 토핑으로 보입니다.",
+      "correct": false,
+      "seconds": 3.0
+    },
+    {
+      "file": "miso_3.jpg",
+      "answer": "miso",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "두부",
+        "버섯",
+        "양파",
+        "버섯",
+        "양파",
+        "버섯",
+        "양파",
+        "버섯",
+        "양파",
+        "버섯"
+      ],
+      "reason": "국물이 진한 갈색이고, 두부, 버섯, 양파 등 다양한 토핑이 보여 쇼유 라멘으로 추정됩니다.",
+      "correct": false,
+      "seconds": 3.7
+    },
+    {
+      "file": "miso_4.jpg",
+      "answer": "miso",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "돼지고기",
+        "두부",
+        "마늘",
+        "파"
+      ],
+      "reason": "국물이 진한 갈색으로 돈코츠 라멘의 특징을 보이고, 면은 가는 면으로 보이며, 돼지고기와 두부, 마늘, 파 등이 토핑으로 올려져 있습니다.",
+      "correct": false,
+      "seconds": 3.6
+    },
+    {
+      "file": "shio_1.jpg",
+      "answer": "shio",
+      "label": "shio",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "알고기",
+        "김",
+        "파"
+      ],
+      "reason": "국물이 투명하고 면이 가는 면으로 보이며, 알고기, 김, 파가 토핑으로 보입니다.",
+      "correct": true,
+      "seconds": 2.7
+    },
+    {
+      "file": "shio_2.jpg",
+      "answer": "shio",
+      "label": "shio",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "파스타",
+        "파스타",
+        "파스타",
+        "파스타",
+        "파스타",
+        "파스타",
+        "파스타",
+        "파스타",
+        "파스타",
+        "파스타"
+      ],
+      "reason": "국물이 투명하고 면이 가는 면으로 보이며, 토핑으로는 파스타가 여러 개 보입니다.",
+      "correct": true,
+      "seconds": 3.4
+    },
+    {
+      "file": "shio_3.jpg",
+      "answer": "shio",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "육회",
+        "다진 마늘",
+        "다진 양파",
+        "다진 당근",
+        "다진 배추"
+      ],
+      "reason": "육회와 다진 채소가 보이며, 국물이 진한 갈색으로 보여 shoyu 라멘임을 추정합니다.",
+      "correct": false,
+      "seconds": 3.5
+    },
+    {
+      "file": "shoyu_1.jpg",
+      "answer": "shoyu",
+      "label": "shio",
+      "soup": true,
+      "soup_color": "연한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "파슬리",
+        "파"
+      ],
+      "reason": "국물이 연한 갈색으로 보이며, 면은 가는 면으로 보이며, 토핑으로 파슬리와 파가 보입니다.",
+      "correct": false,
+      "seconds": 3.2
+    },
+    {
+      "file": "shoyu_2.jpg",
+      "answer": "shoyu",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "계란",
+        "파",
+        "다진 고기",
+        "다진 채소"
+      ],
+      "reason": "국물이 진한 갈색이고, 면은 가는 면으로 보이며, 계란과 파 등 다양한 토핑이 보입니다.",
+      "correct": true,
+      "seconds": 3.4
+    },
+    {
+      "file": "shoyu_3.jpg",
+      "answer": "shoyu",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "연한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "국물",
+        "국물 위에 얇게 썬 돼지고기",
+        "국물 위에 얇게 썬 채소",
+        "국물 위에 얇게 썬 채소",
+        "국물 위에 얇게 썬 채소",
+        "국물 위에 얇게 썬 채소",
+        "국물 위에 얇게 썬 채소",
+        "국물 위에 얇게 썬 채소",
+        "국물 위에 얇게 썬 채소",
+        "국물 위에 얇게 썬 채소"
+      ],
+      "reason": "국물이 있으며, 돼지고기와 채소가 토핑으로 보이며, 면의 질감과 색상에서 가는 면을 추정할 수 있습니다.",
+      "correct": true,
+      "seconds": 7.1
+    },
+    {
+      "file": "shoyu_4.jpg",
+      "answer": "shoyu",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "계란",
+        "파"
+      ],
+      "reason": "계란이 끓인 것으로 보이며, 국물 색상과 면의 굵기, 토핑으로 미루어 볼 때 이에케 라멘의 특징을 보여줍니다.",
+      "correct": false,
+      "seconds": 3.2
+    },
+    {
+      "file": "toripaitan_1.jpg",
+      "answer": "toripaitan",
+      "label": "shio",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "파슬리",
+        "돼지고기",
+        "돼지 갈비"
+      ],
+      "reason": "국물이 투명하고 면이 가는 면으로 보이며, 토핑으로 파슬리, 돼지고기, 돼지 갈비가 보입니다.",
+      "correct": false,
+      "seconds": 3.3
+    },
+    {
+      "file": "toripaitan_2.jpg",
+      "answer": "toripaitan",
+      "label": "toripaitan",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "다진 채소",
+        "다진 양파",
+        "다진 마늘",
+        "다진 고추",
+        "다진 쌈채소"
+      ],
+      "reason": "국물이 투명하고, 면은 가는 면으로 보이며, 토핑으로는 다진 채소, 다진 양파, 다진 마늘, 다진 고추, 다진 쌈채소가 보입니다. 이는 토리파이탄 라멘의 특징과 일치합니다.",
+      "correct": true,
+      "seconds": 5.0
+    },
+    {
+      "file": "toripaitan_3.jpg",
+      "answer": "toripaitan",
+      "label": "donkotsu",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "파스타",
+        "파이프",
+        "파스타",
+        "파스타"
+      ],
+      "reason": "국물이 투명하고 돈코츠 라멘의 특징인 돈가스와 돈코츠 국물이 보여, 돈코츠 라멘으로 추정됩니다.",
+      "correct": false,
+      "seconds": 3.6
+    }
+  ]
+}
