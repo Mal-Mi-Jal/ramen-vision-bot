@@ -1,0 +1,407 @@
+{
+  "summary": {
+    "model": "qwen2.5vl:7b",
+    "accuracy": 0.17391304347826086,
+    "correct": 4,
+    "total": 23
+  },
+  "rows": [
+    {
+      "file": "aburasoba_1.jpg",
+      "answer": "aburasoba",
+      "label": "ieke",
+      "soup": false,
+      "soup_color": "없음",
+      "noodle": "가는 면",
+      "toppings": [
+        "돼지고기",
+        "양파",
+        "임시",
+        "후추",
+        "김"
+      ],
+      "reason": "이 라멘은 돈코츠 라멘과 비슷한 토핑과 면의 굵기로 보이며, 돈코츠 라멘의 특징인 돼지고기와 양파, 임시, 후추, 김이 보입니다.",
+      "correct": false,
+      "seconds": 3.1
+    },
+    {
+      "file": "aburasoba_2.jpg",
+      "answer": "aburasoba",
+      "label": "shoyupaitan",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "돼지고기",
+        "파",
+        "파프리카",
+        "다진 양파",
+        "파래",
+        "미역"
+      ],
+      "reason": "국물이 투명하고, 돼지고기, 파, 파프리카, 다진 양파, 파래, 미역 등 다양한 토핑이 보여, 쇼유와 파이탄의 특징을 모두 가진 라멘으로 보입니다.",
+      "correct": false,
+      "seconds": 3.1
+    },
+    {
+      "file": "aburasoba_3.jpg",
+      "answer": "aburasoba",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "뽀얀 흰색",
+      "noodle": "가는 면",
+      "toppings": [
+        "계란",
+        "돼지고기",
+        "두부",
+        "파",
+        "마늘",
+        "간장",
+        "고추가루",
+        "미역"
+      ],
+      "reason": "이 라멘은 면 위에 계란, 돼지고기, 두부, 파, 마늘, 간장, 고추가루, 미역 등 다양한 토핑이 올려져 있으며, 국물이 뽀얀 흰색으로 보여서 이에케 라멘으로 추정됩니다.",
+      "correct": false,
+      "seconds": 3.5
+    },
+    {
+      "file": "donkotsu_1.jpg",
+      "answer": "donkotsu",
+      "label": "shoyupaitan",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "오이",
+        "파",
+        "김"
+      ],
+      "reason": "국물이 투명하고, 면은 가는 면으로 보이며, 토핑에는 오이, 파, 김이 있습니다. 이는 쇼유파이탄 라멘의 특징과 일치합니다.",
+      "correct": false,
+      "seconds": 2.6
+    },
+    {
+      "file": "ieke_1.jpg",
+      "answer": "ieke",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "김",
+        "깻잎",
+        "돼지고기"
+      ],
+      "reason": "국물이 진한 갈색이고, 면은 가는 면으로 보이며, 김, 깻잎, 돼지고기가 토핑으로 보입니다.",
+      "correct": false,
+      "seconds": 2.3
+    },
+    {
+      "file": "ieke_2.jpg",
+      "answer": "ieke",
+      "label": "shoyupaitan",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "김",
+        "파래",
+        "육회"
+      ],
+      "reason": "국물이 진한 갈색이고, 면은 가는 면으로 보이며, 육회와 김, 파래가 토핑으로 보입니다.",
+      "correct": false,
+      "seconds": 2.3
+    },
+    {
+      "file": "karai_1.jpg",
+      "answer": "karai",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "알",
+        "파",
+        "후추",
+        "김"
+      ],
+      "reason": "국물이 진한 갈색이고, 면은 가는 면으로 보이며, 알, 파, 후추, 김 등 다양한 토핑이 보입니다. 이는 일반적으로 일본의 가정식 라멘인 '이에케'의 특징과 일치합니다.",
+      "correct": false,
+      "seconds": 2.8
+    },
+    {
+      "file": "miso_1.jpg",
+      "answer": "miso",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "계란",
+        "돼지고기",
+        "파",
+        "마늘",
+        "고추가루",
+        "버섯"
+      ],
+      "reason": "국물이 진한 갈색이고, 면은 가는 면으로 보이며, 계란, 돼지고기, 파, 마늘, 고추가루, 버섯 등 다양한 토핑이 보입니다. 이는 일반적으로 일본 가정식 라멘인 '이에케'의 특징과 일치합니다.",
+      "correct": false,
+      "seconds": 3.3
+    },
+    {
+      "file": "shio_1.jpg",
+      "answer": "shio",
+      "label": "shoyupaitan",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "돼지고기",
+        "파슬리",
+        "파"
+      ],
+      "reason": "국물이 투명하고 면이 가는 면으로 보이며, 돼지고기와 파슬리, 파가 토핑으로 보입니다.",
+      "correct": false,
+      "seconds": 2.3
+    },
+    {
+      "file": "shio_2.jpg",
+      "answer": "shio",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "계란",
+        "오징어",
+        "고기",
+        "파"
+      ],
+      "reason": "국물이 진한 갈색이고, 면은 가는 면으로 보이며, 계란, 오징어, 고기, 파 등 다양한 토핑이 보입니다. 이는 일반적으로 일본의 가정식 라멘인 '이에케'의 특징과 일치합니다.",
+      "correct": false,
+      "seconds": 3.0
+    },
+    {
+      "file": "shio_3.jpg",
+      "answer": "shio",
+      "label": "donkotsu",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "육회",
+        "해산물",
+        "파슬리"
+      ],
+      "reason": "육회와 해산물이 들어간 투명한 국물 라멘으로, 돈코츠 라멘의 특징을 보여줍니다.",
+      "correct": false,
+      "seconds": 2.3
+    },
+    {
+      "file": "shio_4.jpg",
+      "answer": "shio",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "알밥",
+        "알",
+        "파스타",
+        "감자",
+        "감자",
+        "감자",
+        "감자",
+        "감자",
+        "감자",
+        "감자"
+      ],
+      "reason": "이 라멘은 면이 가는 면으로 보이며, 국물이 진한 갈색이고, 알밥, 알, 파스타, 감자 등 다양한 토핑이 보입니다. 이는 일반적으로 가정식 라멘 스타일인 '이에케' 라멘을 나타냅니다.",
+      "correct": false,
+      "seconds": 4.7
+    },
+    {
+      "file": "shio_5.jpg",
+      "answer": "shio",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "뽀얀 흰색",
+      "noodle": "가는 면",
+      "toppings": [
+        "육회",
+        "국수",
+        "파"
+      ],
+      "reason": "육회와 국수, 파 등이 보이는 토핑과 뽀얀 흰색의 국물로 인해 이에케 라멘으로 추정됩니다.",
+      "correct": false,
+      "seconds": 3.4
+    },
+    {
+      "file": "shio_6.jpg",
+      "answer": "shio",
+      "label": "shio",
+      "soup": true,
+      "soup_color": "뽀얀 흰색",
+      "noodle": "가는 면",
+      "toppings": [
+        "돼지고기",
+        "파슬리",
+        "파"
+      ],
+      "reason": "국물이 투명하고 뽀얀 흰색이며, 면은 가는 면으로 보이며, 돼지고기와 파슬리, 파가 토핑으로 보입니다.",
+      "correct": true,
+      "seconds": 3.5
+    },
+    {
+      "file": "shio_7.jpg",
+      "answer": "shio",
+      "label": "shoyupaitan",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "알고기",
+        "알",
+        "파"
+      ],
+      "reason": "국물이 투명하고 면은 가는 면으로 보이며, 알고기, 알, 파가 토핑으로 보입니다. 이는 쇼유파이탄 라멘의 특징과 일치합니다.",
+      "correct": false,
+      "seconds": 3.7
+    },
+    {
+      "file": "shoyu_1.jpg",
+      "answer": "shoyu",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "계란",
+        "파"
+      ],
+      "reason": "국물이 진한 갈색이고, 면은 가는 면으로 보이며, 계란과 파가 토핑으로 보입니다. 이에케 라멘의 특징과 일치합니다.",
+      "correct": false,
+      "seconds": 3.4
+    },
+    {
+      "file": "shoyu_2.jpg",
+      "answer": "shoyu",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "육회",
+        "파",
+        "파프리카",
+        "다진 양파"
+      ],
+      "reason": "국물이 진한 갈색이고, 육회와 파 등 다양한 토핑이 보여 쇼유 라멘임을 판단했습니다.",
+      "correct": true,
+      "seconds": 3.5
+    },
+    {
+      "file": "shoyu_3.jpg",
+      "answer": "shoyu",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "계란",
+        "돼지고기",
+        "파"
+      ],
+      "reason": "국물이 진한 갈색이고, 면은 가는 면으로 보이며, 계란과 돼지고기, 파가 토핑으로 보입니다.",
+      "correct": true,
+      "seconds": 3.3
+    },
+    {
+      "file": "shoyu_4.jpg",
+      "answer": "shoyu",
+      "label": "shoyu",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "돼지고기",
+        "김",
+        "파슬리",
+        "파"
+      ],
+      "reason": "국물이 진한 갈색이고, 돼지고기와 김이 보이는 라멘으로, 쇼유 라멘의 특징을 가지고 있습니다.",
+      "correct": true,
+      "seconds": 3.4
+    },
+    {
+      "file": "shoyupaitan_1.jpg",
+      "answer": "shoyupaitan",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "진한 갈색",
+      "noodle": "가는 면",
+      "toppings": [
+        "알",
+        "파",
+        "참치",
+        "파래",
+        "김"
+      ],
+      "reason": "국물이 진한 갈색이고, 면은 가는 면으로 보이며, 알, 파, 참치, 파래, 김 등 다양한 토핑이 올려져 있어 이에케 라멘의 특징을 보여줍니다.",
+      "correct": false,
+      "seconds": 3.8
+    },
+    {
+      "file": "shoyupaitan_2.jpg",
+      "answer": "shoyupaitan",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "투명",
+      "noodle": "가는 면",
+      "toppings": [
+        "오이",
+        "파",
+        "오징어",
+        "김"
+      ],
+      "reason": "국물이 투명하고 면이 가는 면으로 보이며, 김과 오징어, 파, 오이 등 다양한 토핑이 올려져 있습니다.",
+      "correct": false,
+      "seconds": 3.4
+    },
+    {
+      "file": "toripaitan_1.jpg",
+      "answer": "toripaitan",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "뽀얀 흰색",
+      "noodle": "가는 면",
+      "toppings": [
+        "계란",
+        "파슬리",
+        "파이프",
+        "후추",
+        "후라이드 옥수수",
+        "다진 고기"
+      ],
+      "reason": "국물이 투명하고 뽀얀 흰색이며, 면은 가는 면으로 보이며, 계란, 파슬리, 파이프, 후추, 후라이드 옥수수, 다진 고기 등 다양한 토핑이 올려져 있습니다.",
+      "correct": false,
+      "seconds": 4.4
+    },
+    {
+      "file": "toripaitan_2.jpg",
+      "answer": "toripaitan",
+      "label": "ieke",
+      "soup": true,
+      "soup_color": "뽀얀 흰색",
+      "noodle": "가는 면",
+      "toppings": [
+        "돼지고기",
+        "깻잎",
+        "당근"
+      ],
+      "reason": "돼지고기와 켓잎이 있는 라멘으로, 일반적으로 이에케 스타일의 라멘을 연상시킵니다.",
+      "correct": false,
+      "seconds": 3.3
+    }
+  ]
+}

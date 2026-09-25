@@ -22,12 +22,13 @@ PROMPT = """이 사진을 보고 한국어로 답해줘.
 라멘이 아니면 '라멘 아님'이라고만 답해."""
 
 
-def load_resized(image_path: Path) -> bytes:
+def load_resized(image_path: Path, verbose: bool = True) -> bytes:
     """이미지를 긴 변 MAX_SIDE 이하로 줄여서 JPEG 바이트로 돌려준다."""
     img = Image.open(image_path).convert("RGB")
     original = img.size
     img.thumbnail((MAX_SIDE, MAX_SIDE))  # 비율 유지하며 축소 (작은 이미지는 그대로)
-    print(f"이미지 크기: {original[0]}x{original[1]} -> {img.size[0]}x{img.size[1]}")
+    if verbose:
+        print(f"이미지 크기: {original[0]}x{original[1]} -> {img.size[0]}x{img.size[1]}")
     buf = io.BytesIO()
     img.save(buf, format="JPEG", quality=90)
     return buf.getvalue()
