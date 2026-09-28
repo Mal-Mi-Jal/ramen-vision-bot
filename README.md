@@ -149,6 +149,17 @@ docs/experiments.md 실험 기록 (Before/After, 실패 분석)
 - **알려진 약점**: 노란빛이 도는 탁한 국물(실제 토리파이탄 등)을 시오로 판단 / 김만 보고 이에케로 판단 / 파가 수북하면 국물 유무를 틀림
 - **다음 단계**: 위 약점 개선(튜닝용 사진 기준) → 일본어 메뉴·식권기 읽기 → 소형 모델 QLoRA 파인튜닝 비교
 
+## 관련 프로젝트
+
+```
+RamenLog (라멘 방문 인증 서비스) ──▶ AI Research Agent (근거 인용 에이전트) ──▶ Ramen Vision Bot (이 저장소)
+```
+
+| 프로젝트 | 한 줄 소개 | 이 프로젝트와의 연결 |
+|---|---|---|
+| [AI Research Agent](https://github.com/Mal-Mi-Jal/Ai-research-agent) | 주제를 넣으면 웹을 조사해 **원문 근거를 인용한 리포트**를 만드는 LangGraph 에이전트 (MCP·n8n·Docker 배포) | "근거는 검색으로, 출처 목록은 코드로" 설계 원칙과 Chroma·FastAPI 패턴을 이어받음 |
+| [RamenLog](https://github.com/Mal-Mi-Jal/Ramen-frontend) | **GPS + 체류 시간으로 방문을 인증**해야 리뷰를 쓸 수 있는 라멘 리뷰 서비스 (Kotlin · Spring Boot, 백엔드 저장소는 비공개) | 다음 단계로 계획한 **영수증 OCR 방문 인증**에 이 프로젝트의 비전 모델을 연결할 수 있음 |
+
 ## 데이터와 라이선스
 
 - **지식 문서** (`knowledge/`): 위키백과 일본어판 등의 내용을 요약·재구성했으며, 문서마다 출처 URL이 있습니다.
