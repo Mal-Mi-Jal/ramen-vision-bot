@@ -75,7 +75,7 @@ flowchart LR
 
 튜닝용 사진(76%)보다 16%p 낮지만, 새 사진에서도 VLM 단독 대비 **2배 이상**입니다.
 
-모든 실험의 설정·결과·실패 분석은 [docs/experiments.md](docs/experiments.md), 원본 결과는 [`results/`](results/)에 있습니다.
+모든 실험의 설정·결과·실패 분석은 [docs/experiments.md](docs/experiments.md), 원본 결과는 [`results/`](results/)에 있습니다. 기술별 설계 이유는 [docs/tech-notes.md](docs/tech-notes.md)에 정리했습니다.
 
 ## 설계하며 배운 것
 
