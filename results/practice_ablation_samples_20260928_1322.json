@@ -1,0 +1,734 @@
+{
+  "vlm_seconds_per_image": {
+    "1024": 4.045034658341181,
+    "768": 3.5514603001730785
+  },
+  "runs": {
+    "A (1024, k5)": {
+      "correct": 15,
+      "total": 21,
+      "retrieval_hit": 18,
+      "rows": [
+        {
+          "file": "aburasoba_1.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "aburasoba_2.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "aburasoba_3.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "donkotsu_1.jpg",
+          "answer": "donkotsu",
+          "pred": "ieke",
+          "correct": false,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "ieke_1.jpg",
+          "answer": "ieke",
+          "pred": "ieke",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "ieke_2.jpg",
+          "answer": "ieke",
+          "pred": "ieke",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "karai_1.jpg",
+          "answer": "karai",
+          "pred": "ieke",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "miso_1.jpg",
+          "answer": "miso",
+          "pred": "miso",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shio_1.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_2.jpg",
+          "answer": "shio",
+          "pred": "donkotsu",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "shio_3.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_4.jpg",
+          "answer": "shio",
+          "pred": "ieke",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "shio_5.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_6.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_7.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_1.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_2.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shoyu_3.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_4.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "toripaitan_1.jpg",
+          "answer": "toripaitan",
+          "pred": "donkotsu",
+          "correct": false,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "toripaitan_2.jpg",
+          "answer": "toripaitan",
+          "pred": "shio",
+          "correct": false,
+          "hit": true,
+          "egg": false
+        }
+      ]
+    },
+    "B (1024, k3)": {
+      "correct": 14,
+      "total": 21,
+      "retrieval_hit": 16,
+      "rows": [
+        {
+          "file": "aburasoba_1.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "aburasoba_2.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "aburasoba_3.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "donkotsu_1.jpg",
+          "answer": "donkotsu",
+          "pred": "ieke",
+          "correct": false,
+          "hit": false,
+          "egg": false
+        },
+        {
+          "file": "ieke_1.jpg",
+          "answer": "ieke",
+          "pred": "ieke",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "ieke_2.jpg",
+          "answer": "ieke",
+          "pred": "ieke",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "karai_1.jpg",
+          "answer": "karai",
+          "pred": "ieke",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "miso_1.jpg",
+          "answer": "miso",
+          "pred": "donkotsu",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "shio_1.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_2.jpg",
+          "answer": "shio",
+          "pred": "donkotsu",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "shio_3.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_4.jpg",
+          "answer": "shio",
+          "pred": "ieke",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "shio_5.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_6.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_7.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_1.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_2.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shoyu_3.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_4.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "toripaitan_1.jpg",
+          "answer": "toripaitan",
+          "pred": "donkotsu",
+          "correct": false,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "toripaitan_2.jpg",
+          "answer": "toripaitan",
+          "pred": "shio",
+          "correct": false,
+          "hit": true,
+          "egg": false
+        }
+      ]
+    },
+    "C (768, k5)": {
+      "correct": 16,
+      "total": 21,
+      "retrieval_hit": 19,
+      "rows": [
+        {
+          "file": "aburasoba_1.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "aburasoba_2.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "aburasoba_3.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "donkotsu_1.jpg",
+          "answer": "donkotsu",
+          "pred": "ieke",
+          "correct": false,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "ieke_1.jpg",
+          "answer": "ieke",
+          "pred": "shoyu",
+          "correct": false,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "ieke_2.jpg",
+          "answer": "ieke",
+          "pred": "ieke",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "karai_1.jpg",
+          "answer": "karai",
+          "pred": "karai",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "miso_1.jpg",
+          "answer": "miso",
+          "pred": "miso",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shio_1.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_2.jpg",
+          "answer": "shio",
+          "pred": "donkotsu",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "shio_3.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_4.jpg",
+          "answer": "shio",
+          "pred": "ieke",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "shio_5.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_6.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_7.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_1.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_2.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shoyu_3.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_4.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "toripaitan_1.jpg",
+          "answer": "toripaitan",
+          "pred": "donkotsu",
+          "correct": false,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "toripaitan_2.jpg",
+          "answer": "toripaitan",
+          "pred": "toripaitan",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        }
+      ]
+    },
+    "D (768, k3)": {
+      "correct": 14,
+      "total": 21,
+      "retrieval_hit": 16,
+      "rows": [
+        {
+          "file": "aburasoba_1.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "aburasoba_2.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "aburasoba_3.jpg",
+          "answer": "aburasoba",
+          "pred": "aburasoba",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "donkotsu_1.jpg",
+          "answer": "donkotsu",
+          "pred": "ieke",
+          "correct": false,
+          "hit": false,
+          "egg": false
+        },
+        {
+          "file": "ieke_1.jpg",
+          "answer": "ieke",
+          "pred": "shoyu",
+          "correct": false,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "ieke_2.jpg",
+          "answer": "ieke",
+          "pred": "ieke",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "karai_1.jpg",
+          "answer": "karai",
+          "pred": "ieke",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "miso_1.jpg",
+          "answer": "miso",
+          "pred": "donkotsu",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "shio_1.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_2.jpg",
+          "answer": "shio",
+          "pred": "donkotsu",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "shio_3.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_4.jpg",
+          "answer": "shio",
+          "pred": "ieke",
+          "correct": false,
+          "hit": false,
+          "egg": true
+        },
+        {
+          "file": "shio_5.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_6.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shio_7.jpg",
+          "answer": "shio",
+          "pred": "shio",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_1.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_2.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "shoyu_3.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "shoyu_4.jpg",
+          "answer": "shoyu",
+          "pred": "shoyu",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        },
+        {
+          "file": "toripaitan_1.jpg",
+          "answer": "toripaitan",
+          "pred": "donkotsu",
+          "correct": false,
+          "hit": true,
+          "egg": true
+        },
+        {
+          "file": "toripaitan_2.jpg",
+          "answer": "toripaitan",
+          "pred": "toripaitan",
+          "correct": true,
+          "hit": true,
+          "egg": false
+        }
+      ]
+    }
+  },
+  "egg_true": {
+    "1024": [
+      "aburasoba_2.jpg",
+      "aburasoba_3.jpg",
+      "karai_1.jpg",
+      "miso_1.jpg",
+      "shio_2.jpg",
+      "shio_4.jpg",
+      "shio_7.jpg",
+      "shoyu_1.jpg",
+      "shoyu_3.jpg",
+      "toripaitan_1.jpg"
+    ],
+    "768": [
+      "aburasoba_2.jpg",
+      "aburasoba_3.jpg",
+      "karai_1.jpg",
+      "miso_1.jpg",
+      "shio_2.jpg",
+      "shio_4.jpg",
+      "shio_7.jpg",
+      "shoyu_1.jpg",
+      "shoyu_3.jpg",
+      "toripaitan_1.jpg"
+    ]
+  }
+}
