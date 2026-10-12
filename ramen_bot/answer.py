@@ -33,6 +33,9 @@ def _observed(features: dict) -> list[str]:
 def explain(result: dict) -> dict:
     """identify() 결과 -> 화면에 보여줄 설명"""
     style = result.get("style")
+    if style == "not_ramen":
+        return {"ok": False, "kind": "not_ramen",
+                "message": "라멘 사진이 아닌 것 같아요. 라멘 그릇이 잘 보이는 사진을 올려 주세요."}
     if style in (None, "invalid"):
         return {"ok": False, "message": "사진을 분석하지 못했어요. 라멘 그릇이 잘 보이는 사진으로 다시 시도해 주세요."}
 

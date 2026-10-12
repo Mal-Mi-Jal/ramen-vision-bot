@@ -5,7 +5,7 @@ from pathlib import Path
 import ollama
 
 from ramen_bot.knowledge import get_sections, search
-from ramen_bot.vision import MODEL, NUM_CTX, extract_features
+from ramen_bot.vision import MODEL, NUM_CTX, extract_features, is_noodle_dish
 
 # 검색어는 지식 문서와 같은 한국어로 만든다 (문서 속 "사진으로 구분하는 법" 표현과 맞춤)
 KO = {
@@ -115,6 +115,11 @@ def judge(features: dict, k: int = 5) -> dict:
 
 
 def identify(path: Path) -> dict:
-    """사진 한 장 -> 특징 추출 -> 문서 검색 -> 종류 판단"""
+    """사진 한 장 -> 관문(면 요리인가) -> 특징 추출 -> 문서 검색 -> 종류 판단"""
+    # 관문: 면 요리가 아니면 특징 추출·검색·판단을 하지 않는다. 8종류 중 하나를 반드시 고르는 구조라서,
+    # 그대로 진행하면 라멘이 아닌 사진도 어떤 종류로든 판별된다 (실험 10)
+    if is_noodle_dish(path) == "no":
+        return {"features": {}, "style": "not_ramen", "reason": "No noodle dish in the photo.",
+                "query": "", "retrieved": [], "sources": []}
     features = extract_features(path)
     return {"features": features, **judge(features)}

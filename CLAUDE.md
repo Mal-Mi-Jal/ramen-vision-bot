@@ -10,13 +10,15 @@ Target hardware: RTX 3060 Ti, **8GB VRAM**. Keep models ~≤8B at 4-bit; only on
 
 ## Status
 
-8 styles (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba). Held-out Wikimedia set (`samples_test/`, 25 photos): pipeline 60% vs VLM-only 28%. Tuning set (`samples/`, 21 photos): 76%. Details in `docs/experiments.md` 실험 1–9. Local FastAPI demo works; no automated tests yet.
+8 styles (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba). Held-out Wikimedia set (`samples_test/`, 25 photos): pipeline 60% vs VLM-only 28%. Tuning set (`samples/`, 21 photos): 76%. Details in `docs/experiments.md` 실험 1–10. Non-ramen photos are rejected by a gate (실험 10). Local FastAPI demo works; no automated tests yet.
 
 Scope decisions: shoyupaitan was dropped (not a major style) — `samples/shoyupaitan_*.jpg` stay on disk but aren't graded. A tsukemen draft was started and removed (see "Adding a style").
 
 ## Architecture: "VLM sees, RAG judges"
 
-Core logic is the `ramen_bot/` package (installed editable via `-e .` in requirements.txt). Flow: `judge.identify(path)` = `vision.extract_features` → `judge.judge`; `api.py` then calls `answer.explain`.
+Core logic is the `ramen_bot/` package (installed editable via `-e .` in requirements.txt). Flow: `judge.identify(path)` = `vision.is_noodle_dish` (gate) → `vision.extract_features` → `judge.judge`; `api.py` then calls `answer.explain`.
+
+- **Gate** (`vision.is_noodle_dish`, 실험 10): a separate VLM call that picks noodle_bowl / other_food / not_food; anything but noodle_bowl → `identify` returns style `not_ramen` (no retrieval/judge), `answer.explain` returns `ok: False, kind: "not_ramen"`, and the page shows a notice instead of an error. Keep it a **separate call**: putting `is_ramen` into the feature prompt shifted existing features. It is deliberately lenient ("if unsure, noodle_bowl") — asking "are noodles visible?" rejected milky-broth bowls where noodles are submerged. Only 5 non-ramen photos were tested (also used while wording it), so a fresh negative set is still needed.
 
 - `vision.py` — VLM (`qwen2.5vl:7b`) returns only visible features as English enums (soup / clarity / color / noodle) + a yes/no `TOPPINGS` checklist, via Ollama Structured Output. **Never ask it for the style** (VLM-only was 17%). Images are downscaled to long side 1024px (`MAX_SIDE`) with `num_ctx=8192`: Qwen2.5-VL spends ~1 token per 28×28px, and a phone photo overflows the default 4096 context.
 - `knowledge.py` — splits `knowledge/*.md` into `## ` sections, embeds with `bge-m3` via `ollama.embed` (passed explicitly; Chroma's default embedder is unused), stores in Chroma (`chroma_db/`, gitignored). Chunk id = `<file stem>#<heading>`; metadata `style`, `title`, `heading`, `sources`, `soup`. "프로젝트 관찰" sections are excluded (they describe the test photos → leakage).
@@ -65,7 +67,7 @@ Results are written to `results/*.json` (committed). `.claude/launch.json` has a
 Environment gotchas:
 - The Bash tool does not see `ollama` on PATH; use PowerShell and reload PATH first: `$env:Path = [Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [Environment]::GetEnvironmentVariable('Path','User')`.
 - Set `$env:PYTHONIOENCODING='utf-8'` when running scripts from the tool shell (Korean/Japanese output).
-- Ollama server runs at `localhost:11434` (started by the Ollama app).
+- Ollama server runs at `localhost:11434` (started by the Ollama app). It auto-updated 0.34.4 → 0.40.3 between 실험 9 and 10; that alone changed one held-out prediction and runs got slower (~6–7 s per feature extraction with VRAM nearly full). Compare numbers only within the same Ollama version.
 
 ## Data and privacy
 
