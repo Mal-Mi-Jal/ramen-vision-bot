@@ -9,3 +9,8 @@ requires-python = ">=3.11"
 
 [tool.setuptools]
 packages = ["ramen_bot"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# 이 폴더의 ramen_bot을 먼저 import한다 (venv의 -e . 설치가 다른 폴더를 가리켜도 지금 코드를 테스트하도록)
+pythonpath = ["."]

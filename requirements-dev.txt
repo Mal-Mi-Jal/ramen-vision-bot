@@ -1,0 +1,3 @@
+-r requirements.txt
+# 테스트 전용 (Gradle의 testImplementation에 해당)
+pytest

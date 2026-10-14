@@ -10,7 +10,7 @@ Target hardware: RTX 3060 Ti, **8GB VRAM**. Keep models ~≤8B at 4-bit; only on
 
 ## Status
 
-8 styles (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba). Held-out Wikimedia set (`samples_test/`, 25 photos): pipeline 60% vs VLM-only 28%. Tuning set (`samples/`, 21 photos): 76%. (These are the published numbers, measured on Ollama 0.34.4 — for new work compare against "Current baseline" below.) Details in `docs/experiments.md` 실험 1–10. Non-ramen photos are rejected by a gate (실험 10). Local FastAPI demo works; no automated tests yet.
+8 styles (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba). Held-out Wikimedia set (`samples_test/`, 25 photos): pipeline 60% vs VLM-only 28%. Tuning set (`samples/`, 21 photos): 76%. (These are the published numbers, measured on Ollama 0.34.4 — for new work compare against "Current baseline" below.) Details in `docs/experiments.md` 실험 1–10. Non-ramen photos are rejected by a gate (실험 10). Local FastAPI demo works. Model-free logic is covered by pytest (`tests/`, ~50 tests, <1 s, no Ollama/Chroma needed).
 
 Scope decisions: shoyupaitan was dropped (not a major style) — `samples/shoyupaitan_*.jpg` stay on disk but aren't graded. A tsukemen draft was started and removed (see "Adding a style").
 
@@ -59,6 +59,7 @@ python scripts/eval_rag.py [--samples samples_test] # pipeline accuracy + retrie
 python scripts/eval_baseline.py [--samples DIR] [--reason-first]  # VLM-only baseline (8 styles; not comparable to the 9-style 17% in 실험 4)
 python scripts/eval_features.py                     # visual-feature accuracy vs data/labels.csv
 python scripts/test_vision.py samples/shio_1.jpg    # free-form VLM smoke test
+pip install -r requirements-dev.txt; python -m pytest  # unit tests (no Ollama/Chroma; run after every code change)
 ollama list                                         # qwen2.5vl:7b (vision + judge), bge-m3 (embeddings)
 ```
 
@@ -86,7 +87,7 @@ Tuning-set misses: donkotsu_1→ieke, karai_1→ieke, shio_4→ieke, toripaitan_
 1. **Negative set for the gate.** Build ~20 non-ramen photos (other food incl. pasta/udon/pho, objects, scenery) in a gitignored folder with a license list like `data/test_sources.csv`; report false-accept / false-reject. The gate wording was tuned on only 5 negatives.
 2. **"Nori alone → ieke"** (3 of 5 tuning misses end in ieke; 2 held-out misses too). The judge treats large nori as decisive; ieke needs spinach **and** nori. Options: a rule in the judge prompt, or doc wording in `knowledge/ieke.md` "사진으로 구분하는 법". Measure on `samples/` only.
 3. **Yellowish cloudy broth → shio** (real tori paitan, some ieke; held-out toripaitan_1/3 and the toripaitan↔ieke confusions). The VLM says `pale_gold`; the judge ignores `clarity=cloudy`. Options: make shio's criteria explicitly require clear broth, or add a clarity-aware query/filter. Any doc fact (e.g. "tori paitan can look yellowish") must be sourced first.
-4. **Automated tests (pytest)** for the model-free parts: `judge.features_to_query`, `judge.criteria_filter`, `answer._body` / `explain` (incl. `not_ramen`), `knowledge.load_chunks` (headings, excluded "프로젝트 관찰"), and `api.identify_photo` validation with `identify` monkeypatched. No Ollama needed.
+4. ~~Automated tests (pytest)~~ — done 2026-10-14 (`tests/`). `tests/conftest.py` blocks real `ollama.chat`/`embed` and `chromadb.PersistentClient`; tests monkeypatch the names **where they are used** (e.g. `judge.is_noodle_dish`, not `vision.is_noodle_dish`, because judge.py imports it with `from ... import`). `test_knowledge.py` enforces the docs contract ("유래" is optional — `karai.md` has none). Next: turn `eval_rag.py` into a proper benchmark (auto-compare per-photo results with the baseline JSON, record Ollama version/settings in the result file).
 5. **Speed.** Per-photo time doubled after the Ollama update with VRAM ~7.8/8 GB in use. Try `keep_alive`/unloading `bge-m3` between phases, check `ollama ps` GPU %, and measure before/after on the same version.
 6. **Tsukemen** (see "Adding a style"): needs a `dipping_bowl` visual feature and a 3-way soup filter, plus a sourced doc and photos.
 7. **Ramen-knowledge text Q&A** (planned feature): text question → retrieval over all sections → short grounded answer with citations; fills the empty "After" rows for Before 1–2 in `docs/experiments.md`. Needs guards for free Korean generation (length cap, "모르면 모른다", citations by code).

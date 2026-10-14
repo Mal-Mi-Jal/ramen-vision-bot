@@ -21,3 +21,6 @@ samples_test/
 
 # 개인 작업 메모 (Claude Code가 자동으로 읽지만 공개하지 않음)
 CLAUDE.local.md
+
+# pytest 캐시
+.pytest_cache/
