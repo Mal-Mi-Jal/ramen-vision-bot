@@ -10,7 +10,7 @@ Target hardware: RTX 3060 Ti, **8GB VRAM**. Keep models ~≤8B at 4-bit; only on
 
 ## Status
 
-8 styles (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba). Held-out Wikimedia set (`samples_test/`, 25 photos): pipeline 60% vs VLM-only 28%. Tuning set (`samples/`, 21 photos): 76%. (These are the published numbers, measured on Ollama 0.34.4 — for new work compare against "Current baseline" below.) Details in `docs/experiments.md` 실험 1–11. Non-ramen photos are rejected by a gate (실험 10). Local FastAPI demo works. Model-free logic is covered by pytest (`tests/`, ~60 tests, <1 s, no Ollama/Chroma needed). Eval results record their environment and can be compared per photo (실험 11).
+8 styles (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba). Held-out Wikimedia set (`samples_test/`, 25 photos): pipeline 60% vs VLM-only 28%. Tuning set (`samples/`, 21 photos): 76%. (These are the published numbers, measured on Ollama 0.34.4 — for new work compare against "Current baseline" below.) Details in `docs/experiments.md` 실험 1–12. Non-ramen photos are rejected by a gate (실험 10, verified on 30 unseen photos in 실험 12). Local FastAPI demo works. Model-free logic is covered by pytest (`tests/`, ~60 tests, <1 s, no Ollama/Chroma needed). Eval results record their environment and can be compared per photo (실험 11).
 
 Scope decisions: shoyupaitan was dropped (not a major style) — `samples/shoyupaitan_*.jpg` stay on disk but aren't graded. A tsukemen draft was started and removed (see "Adding a style").
 
@@ -18,7 +18,7 @@ Scope decisions: shoyupaitan was dropped (not a major style) — `samples/shoyup
 
 Core logic is the `ramen_bot/` package (installed editable via `-e .` in requirements.txt). Flow: `judge.identify(path)` = `vision.is_noodle_dish` (gate) → `vision.extract_features` → `judge.judge`; `api.py` then calls `answer.explain`.
 
-- **Gate** (`vision.is_noodle_dish`, 실험 10): a separate VLM call that picks noodle_bowl / other_food / not_food; anything but noodle_bowl → `identify` returns style `not_ramen` (no retrieval/judge), `answer.explain` returns `ok: False, kind: "not_ramen"`, and the page shows a notice instead of an error. Keep it a **separate call**: putting `is_ramen` into the feature prompt shifted existing features. It is deliberately lenient ("if unsure, noodle_bowl") — asking "are noodles visible?" rejected milky-broth bowls where noodles are submerged. Only 5 non-ramen photos were tested (also used while wording it), so a fresh negative set is still needed.
+- **Gate** (`vision.is_noodle_dish`, 실험 10): a separate VLM call that picks noodle_bowl / other_food / not_food; anything but noodle_bowl → `identify` returns style `not_ramen` (no retrieval/judge), `answer.explain` returns `ok: False, kind: "not_ramen"`, and the page shows a notice instead of an error. Keep it a **separate call**: putting `is_ramen` into the feature prompt shifted existing features. It is deliberately lenient ("if unsure, noodle_bowl") — asking "are noodles visible?" rejected milky-broth bowls where noodles are submerged. 실험 12 checked it on 30 unseen photos of the user's own (labels fixed before measuring, wording not changed afterwards): other foods 14/14 rejected, real ramen never rejected (0/49 incl. both baseline sets), other noodle dishes 8/10 passed (by design), but **broth bowls without noodles pass** (국밥, meatball stew: 2 of 4) — false accept 2/18. No non-food photos in that set.
 
 - `vision.py` — VLM (`qwen2.5vl:7b`) returns only visible features as English enums (soup / clarity / color / noodle) + a yes/no `TOPPINGS` checklist, via Ollama Structured Output. **Never ask it for the style** (VLM-only was 17%). Images are downscaled to long side 1024px (`MAX_SIDE`) with `num_ctx=8192`: Qwen2.5-VL spends ~1 token per 28×28px, and a phone photo overflows the default 4096 context.
 - `knowledge.py` — splits `knowledge/*.md` into `## ` sections, embeds with `bge-m3` via `ollama.embed` (passed explicitly; Chroma's default embedder is unused), stores in Chroma (`chroma_db/`, gitignored). Chunk id = `<file stem>#<heading>`; metadata `style`, `title`, `heading`, `sources`, `soup`. "프로젝트 관찰" sections are excluded (they describe the test photos → leakage).
@@ -57,6 +57,7 @@ python scripts/build_index.py ["검색어"]            # rebuild Chroma after ed
 uvicorn ramen_bot.api:app --port 8000               # demo at http://localhost:8000 (needs chroma_db; restart after Python edits)
 python scripts/eval_rag.py [--samples samples_test] [--compare results/<baseline>.json]  # accuracy + recall (~2 min); env (Ollama version, model digests, settings, git commit) is saved in summary.env
 python scripts/compare_results.py OLD.json NEW.json # per-photo diff: fixed / broken / changed, retrieval, timing; warns if env or photo set differs (no GPU)
+python scripts/eval_gate.py                         # gate on samples_negative/ (gitignored, user's photos) labelled in data/negative_labels.csv (~1 min)
 python scripts/eval_baseline.py [--samples DIR] [--reason-first]  # VLM-only baseline (8 styles; not comparable to the 9-style 17% in 실험 4)
 python scripts/eval_features.py                     # visual-feature accuracy vs data/labels.csv
 python scripts/test_vision.py samples/shio_1.jpg    # free-form VLM smoke test
@@ -79,13 +80,13 @@ Measured 2026-10-20 with **Ollama 0.40.6** at commit `ed3a3b9` (실험 11; `resu
 |---|---|---|---|
 | `samples/` (tuning, 21) | 16/21 = 76% | 19/21 | ~6 s |
 | `samples_test/` (held-out, 26 = 실험 8's 25 + user photo `ieke_5`) | 18/26 = 69% | 23/26 | ~5 s |
-| Non-ramen gate check (5 photos in a temp folder, not in the repo) | 5/5 rejected | — | +~1 s |
+| Gate on `samples_negative/` (30 own photos, 실험 12, `results/gate_20261020_1052.json`) | false accept 2/18, ramen passed 2/2, other noodles passed 8/10 | — | ~1.4 s gate only |
 
 Tuning-set misses: donkotsu_1→ieke, karai_1→ieke, shio_4→ieke, toripaitan_1→donkotsu (a tomato read as beni shoga), toripaitan_2→shio. Held-out misses: aburasoba_1→shoyu, donkotsu_1→toripaitan, miso_1→ieke, miso_4→shoyu, shoyu_3→shio, toripaitan_1/toripaitan_2/toripaitan_3→shio (toripaitan_2 flips with each Ollama version: shio → ieke → shio). The held-out set has now been looked at several times (its failures shaped the backlog below), so **after fixing a held-out weakness, a fresh held-out set is needed** before claiming a held-out number.
 
 ## Development backlog (prioritized; pick one per session)
 
-1. **Negative set for the gate.** Build ~20 non-ramen photos (other food incl. pasta/udon/pho, objects, scenery) in a gitignored folder with a license list like `data/test_sources.csv`; report false-accept / false-reject. The gate wording was tuned on only 5 negatives.
+1. ~~Negative set for the gate~~ — done 2026-10-20 (실험 12). Open follow-ups: (a) broth bowls without noodles pass the gate — a separate "soup/stew without noodles" choice might fix it, but re-check that milky-broth ramen (47 baseline photos) is still never rejected, and since 실험 12's 30 photos would then become tuning data, measure on new photos afterwards; (b) no non-food photos yet (objects, scenery, screenshots). The 30-photo set also gave one more "→ ieke" miss (own_01 donkotsu → ieke, see item 2).
 2. **"Nori alone → ieke"** (3 of 5 tuning misses end in ieke; 1 held-out miss, miso_1). The judge treats large nori as decisive; ieke needs spinach **and** nori. Options: a rule in the judge prompt, or doc wording in `knowledge/ieke.md` "사진으로 구분하는 법". Measure on `samples/` only.
 3. **Yellowish cloudy broth → shio** (real tori paitan, some ieke; held-out toripaitan_1/3 and the toripaitan↔ieke confusions). The VLM says `pale_gold`; the judge ignores `clarity=cloudy`. Options: make shio's criteria explicitly require clear broth, or add a clarity-aware query/filter. Any doc fact (e.g. "tori paitan can look yellowish") must be sourced first.
 4. ~~Automated tests (pytest)~~ — done 2026-10-14 (`tests/`). `tests/conftest.py` blocks real `ollama.chat`/`embed` and `chromadb.PersistentClient`; tests monkeypatch the names **where they are used** (e.g. `judge.is_noodle_dish`, not `vision.is_noodle_dish`, because judge.py imports it with `from ... import`). `test_knowledge.py` enforces the docs contract ("유래" is optional — `karai.md` has none). Benchmark tooling (env recording + per-photo compare) done 2026-10-20 (실험 11).

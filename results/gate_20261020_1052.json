@@ -1,0 +1,269 @@
+{
+  "summary": {
+    "per_category": {
+      "other_food": {
+        "passed": 0,
+        "total": 14
+      },
+      "ramen": {
+        "passed": 2,
+        "total": 2
+      },
+      "other_noodle": {
+        "passed": 8,
+        "total": 10
+      },
+      "broth_bowl": {
+        "passed": 2,
+        "total": 4
+      }
+    },
+    "false_accept": [
+      "own_08.jpg",
+      "own_19.jpg"
+    ],
+    "false_accept_rate": 0.1111111111111111,
+    "false_reject": [
+      "own_14.jpg",
+      "own_26.jpg"
+    ],
+    "false_reject_rate": 0.16666666666666666,
+    "total": 30,
+    "timing": {
+      "mean": 1.8,
+      "median": 1.4,
+      "max": 6.4,
+      "max_file": "own_01.jpg"
+    },
+    "env": {
+      "ollama": "0.40.6",
+      "models": {
+        "bge-m3": "790764642607",
+        "qwen2.5vl:7b": "5ced39dfa4ba"
+      },
+      "max_side": 1024,
+      "num_ctx": 8192,
+      "top_k": 5,
+      "git_commit": "89b0167",
+      "git_dirty": false
+    }
+  },
+  "rows": [
+    {
+      "file": "own_00.jpg",
+      "category": "other_food",
+      "description": "빙수",
+      "gate": "no",
+      "seconds": 4.9
+    },
+    {
+      "file": "own_01.jpg",
+      "category": "ramen",
+      "description": "돈코츠 라멘",
+      "gate": "yes",
+      "label": "donkotsu",
+      "style": "ieke",
+      "correct": false,
+      "seconds": 6.4
+    },
+    {
+      "file": "own_02.jpg",
+      "category": "other_noodle",
+      "description": "칼낙지 (칼국수 + 낙지)",
+      "gate": "yes",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_03.jpg",
+      "category": "other_food",
+      "description": "돈카츠",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_04.jpg",
+      "category": "other_noodle",
+      "description": "칼국수",
+      "gate": "yes",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_05.jpg",
+      "category": "other_food",
+      "description": "커피",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_06.jpg",
+      "category": "other_food",
+      "description": "고기 덮밥",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_07.jpg",
+      "category": "other_noodle",
+      "description": "쌀국수",
+      "gate": "yes",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_08.jpg",
+      "category": "broth_bowl",
+      "description": "미트볼 토마토 스튜",
+      "gate": "yes",
+      "seconds": 1.3
+    },
+    {
+      "file": "own_09.jpg",
+      "category": "other_food",
+      "description": "동파육",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_10.jpg",
+      "category": "other_food",
+      "description": "치즈 팬 요리",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_11.jpg",
+      "category": "other_food",
+      "description": "닭 요리",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_12.jpg",
+      "category": "other_food",
+      "description": "치즈 함박/라자냐",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_13.jpg",
+      "category": "broth_bowl",
+      "description": "크림 수프",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_14.jpg",
+      "category": "other_noodle",
+      "description": "한치모밀",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_15.jpg",
+      "category": "other_noodle",
+      "description": "순두부짬뽕",
+      "gate": "yes",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_16.jpg",
+      "category": "ramen",
+      "description": "토리파이탄 라멘",
+      "gate": "yes",
+      "label": "toripaitan",
+      "style": "toripaitan",
+      "correct": true,
+      "seconds": 6.0
+    },
+    {
+      "file": "own_17.jpg",
+      "category": "other_food",
+      "description": "편의점 주먹밥",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_18.jpg",
+      "category": "other_noodle",
+      "description": "스파게티",
+      "gate": "yes",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_19.jpg",
+      "category": "broth_bowl",
+      "description": "국밥",
+      "gate": "yes",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_20.jpg",
+      "category": "other_food",
+      "description": "크림소스 뇨끼",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_21.jpg",
+      "category": "other_food",
+      "description": "피자",
+      "gate": "no",
+      "seconds": 1.3
+    },
+    {
+      "file": "own_22.jpg",
+      "category": "other_noodle",
+      "description": "빠네 (빵 그릇 크림 파스타)",
+      "gate": "yes",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_23.jpg",
+      "category": "other_noodle",
+      "description": "짜장면",
+      "gate": "yes",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_24.jpg",
+      "category": "other_food",
+      "description": "생고기",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_25.jpg",
+      "category": "broth_bowl",
+      "description": "밥과 맑은 국",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_26.jpg",
+      "category": "other_noodle",
+      "description": "파스타와 스테이크",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_27.jpg",
+      "category": "other_food",
+      "description": "삼겹살",
+      "gate": "no",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_28.jpg",
+      "category": "other_noodle",
+      "description": "메밀 비빔면",
+      "gate": "yes",
+      "seconds": 1.4
+    },
+    {
+      "file": "own_29.jpg",
+      "category": "other_food",
+      "description": "김밥",
+      "gate": "no",
+      "seconds": 1.4
+    }
+  ]
+}
