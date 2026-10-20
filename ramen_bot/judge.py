@@ -75,7 +75,10 @@ Rules:
 - First write a short reason in English (max 2 sentences) naming the style key, then choose the style."""
 
 
-def judge(features: dict, k: int = 5) -> dict:
+TOP_K = 5  # 검색 후보 수. 3으로 줄이면 검색 재현율이 떨어졌다 (실험 9)
+
+
+def judge(features: dict, k: int = TOP_K) -> dict:
     query = features_to_query(features)
     chunks = search(query, k=k, where=criteria_filter("no" if features.get("soup") == "no" else "yes"))
     candidates = [c["style"] for c in chunks]
