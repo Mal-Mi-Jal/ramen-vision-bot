@@ -47,7 +47,8 @@ def collect_env() -> dict:
         "top_k": judge.TOP_K,
         "git_commit": _git("rev-parse", "--short", "HEAD"),
         # 커밋하지 않은 수정(프롬프트·문서 등)이 있었는지. True면 git_commit만으로는 재현할 수 없다
-        "git_dirty": _git("status", "--porcelain") not in ("", "unknown"),
+        # results/는 평가가 만드는 파일이라 뺀다 (앞 세트의 결과 파일 때문에 다음 세트가 dirty로 찍혔다)
+        "git_dirty": _git("status", "--porcelain", "--", ".", ":!results") not in ("", "unknown"),
     }
 
 
