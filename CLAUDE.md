@@ -10,7 +10,7 @@ Target hardware: RTX 3060 Ti, **8GB VRAM**. Keep models ~≤8B at 4-bit; only on
 
 ## Status
 
-8 styles (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba). Held-out Wikimedia set (`samples_test/`, 25 photos): pipeline 60% vs VLM-only 28%. Tuning set (`samples/`, 21 photos): 76%. (These are the published numbers, measured on Ollama 0.34.4 — for new work compare against "Current baseline" below.) Details in `docs/experiments.md` 실험 1–10. Non-ramen photos are rejected by a gate (실험 10). Local FastAPI demo works. Model-free logic is covered by pytest (`tests/`, ~50 tests, <1 s, no Ollama/Chroma needed).
+8 styles (shio, shoyu, miso, donkotsu, ieke, toripaitan, karai, aburasoba). Held-out Wikimedia set (`samples_test/`, 25 photos): pipeline 60% vs VLM-only 28%. Tuning set (`samples/`, 21 photos): 76%. (These are the published numbers, measured on Ollama 0.34.4 — for new work compare against "Current baseline" below.) Details in `docs/experiments.md` 실험 1–11. Non-ramen photos are rejected by a gate (실험 10). Local FastAPI demo works. Model-free logic is covered by pytest (`tests/`, ~60 tests, <1 s, no Ollama/Chroma needed). Eval results record their environment and can be compared per photo (실험 11).
 
 Scope decisions: shoyupaitan was dropped (not a major style) — `samples/shoyupaitan_*.jpg` stay on disk but aren't graded. A tsukemen draft was started and removed (see "Adding a style").
 
@@ -55,7 +55,8 @@ Structured Output guards (always): `temperature=0`, `num_predict` cap, `maxItems
 pip install -r requirements.txt
 python scripts/build_index.py ["검색어"]            # rebuild Chroma after editing knowledge/; optional query shows top hits
 uvicorn ramen_bot.api:app --port 8000               # demo at http://localhost:8000 (needs chroma_db; restart after Python edits)
-python scripts/eval_rag.py [--samples samples_test] # pipeline accuracy + retrieval recall (~2 min)
+python scripts/eval_rag.py [--samples samples_test] [--compare results/<baseline>.json]  # accuracy + recall (~2 min); env (Ollama version, model digests, settings, git commit) is saved in summary.env
+python scripts/compare_results.py OLD.json NEW.json # per-photo diff: fixed / broken / changed, retrieval, timing; warns if env or photo set differs (no GPU)
 python scripts/eval_baseline.py [--samples DIR] [--reason-first]  # VLM-only baseline (8 styles; not comparable to the 9-style 17% in 실험 4)
 python scripts/eval_features.py                     # visual-feature accuracy vs data/labels.csv
 python scripts/test_vision.py samples/shio_1.jpg    # free-form VLM smoke test
@@ -72,23 +73,23 @@ Environment gotchas:
 
 ## Current baseline (compare new work against this)
 
-Measured 2026-10-12 with **Ollama 0.40.3** after 실험 10 (`results/rag_samples_20261012_1515.json`, `results/rag_samples_test_20261012_1522.json`). Older numbers in README/experiments were taken on Ollama 0.34.4 and are not directly comparable.
+Measured 2026-10-20 with **Ollama 0.40.6** at commit `ed3a3b9` (실험 11; `results/rag_samples_20261020_1012.json`, `results/rag_samples_test_20261020_1017.json` — both carry `summary.env`). Run new work with `--compare <these files>`. Ollama auto-updated 0.40.3 → 0.40.6 with no code change and the held-out set went 16/26 → 18/26 (ieke_3/ieke_4 fixed, toripaitan_2 changed) — that is **not** an improvement of ours; compare only within one Ollama version. A same-condition rerun reproduced all 26 predictions exactly (temperature 0); timing varies run to run (5.7 vs 4.4 s), so don't judge speed from one run. Older numbers (README, 실험 1–9 on 0.34.4, 실험 10 on 0.40.3) are not directly comparable.
 
 | Set | Accuracy | Retrieval recall | Time/photo |
 |---|---|---|---|
-| `samples/` (tuning, 21) | 16/21 = 76% | 19/21 | ~11 s |
-| `samples_test/` (held-out, 26 = 실험 8's 25 + user photo `ieke_5`) | 16/26 = 62% | 24/26 | ~16 s |
+| `samples/` (tuning, 21) | 16/21 = 76% | 19/21 | ~6 s |
+| `samples_test/` (held-out, 26 = 실험 8's 25 + user photo `ieke_5`) | 18/26 = 69% | 23/26 | ~5 s |
 | Non-ramen gate check (5 photos in a temp folder, not in the repo) | 5/5 rejected | — | +~1 s |
 
-Tuning-set misses: donkotsu_1→ieke, karai_1→ieke, shio_4→ieke, toripaitan_1→donkotsu (a tomato read as beni shoga), toripaitan_2→shio. Held-out misses: aburasoba_1→shoyu, donkotsu_1→toripaitan, ieke_3/ieke_4→toripaitan, miso_1→ieke, miso_4→shoyu, shoyu_3→shio, toripaitan_1/toripaitan_3→shio, toripaitan_2→ieke. The held-out set has now been looked at several times (its failures shaped the backlog below), so **after fixing a held-out weakness, a fresh held-out set is needed** before claiming a held-out number.
+Tuning-set misses: donkotsu_1→ieke, karai_1→ieke, shio_4→ieke, toripaitan_1→donkotsu (a tomato read as beni shoga), toripaitan_2→shio. Held-out misses: aburasoba_1→shoyu, donkotsu_1→toripaitan, miso_1→ieke, miso_4→shoyu, shoyu_3→shio, toripaitan_1/toripaitan_2/toripaitan_3→shio (toripaitan_2 flips with each Ollama version: shio → ieke → shio). The held-out set has now been looked at several times (its failures shaped the backlog below), so **after fixing a held-out weakness, a fresh held-out set is needed** before claiming a held-out number.
 
 ## Development backlog (prioritized; pick one per session)
 
 1. **Negative set for the gate.** Build ~20 non-ramen photos (other food incl. pasta/udon/pho, objects, scenery) in a gitignored folder with a license list like `data/test_sources.csv`; report false-accept / false-reject. The gate wording was tuned on only 5 negatives.
-2. **"Nori alone → ieke"** (3 of 5 tuning misses end in ieke; 2 held-out misses too). The judge treats large nori as decisive; ieke needs spinach **and** nori. Options: a rule in the judge prompt, or doc wording in `knowledge/ieke.md` "사진으로 구분하는 법". Measure on `samples/` only.
+2. **"Nori alone → ieke"** (3 of 5 tuning misses end in ieke; 1 held-out miss, miso_1). The judge treats large nori as decisive; ieke needs spinach **and** nori. Options: a rule in the judge prompt, or doc wording in `knowledge/ieke.md` "사진으로 구분하는 법". Measure on `samples/` only.
 3. **Yellowish cloudy broth → shio** (real tori paitan, some ieke; held-out toripaitan_1/3 and the toripaitan↔ieke confusions). The VLM says `pale_gold`; the judge ignores `clarity=cloudy`. Options: make shio's criteria explicitly require clear broth, or add a clarity-aware query/filter. Any doc fact (e.g. "tori paitan can look yellowish") must be sourced first.
-4. ~~Automated tests (pytest)~~ — done 2026-10-14 (`tests/`). `tests/conftest.py` blocks real `ollama.chat`/`embed` and `chromadb.PersistentClient`; tests monkeypatch the names **where they are used** (e.g. `judge.is_noodle_dish`, not `vision.is_noodle_dish`, because judge.py imports it with `from ... import`). `test_knowledge.py` enforces the docs contract ("유래" is optional — `karai.md` has none). Next: turn `eval_rag.py` into a proper benchmark (auto-compare per-photo results with the baseline JSON, record Ollama version/settings in the result file).
-5. **Speed.** Per-photo time doubled after the Ollama update with VRAM ~7.8/8 GB in use. Try `keep_alive`/unloading `bge-m3` between phases, check `ollama ps` GPU %, and measure before/after on the same version.
+4. ~~Automated tests (pytest)~~ — done 2026-10-14 (`tests/`). `tests/conftest.py` blocks real `ollama.chat`/`embed` and `chromadb.PersistentClient`; tests monkeypatch the names **where they are used** (e.g. `judge.is_noodle_dish`, not `vision.is_noodle_dish`, because judge.py imports it with `from ... import`). `test_knowledge.py` enforces the docs contract ("유래" is optional — `karai.md` has none). Benchmark tooling (env recording + per-photo compare) done 2026-10-20 (실험 11).
+5. **Speed.** The ~2× slowdown seen on 0.40.3 is mostly gone on 0.40.6 (~5–6 s/photo, close to September); the cause (version vs VRAM pressure that day) wasn't recorded. Only worth revisiting if it regresses — measure over 2+ runs and record `ollama ps` GPU %.
 6. **Tsukemen** (see "Adding a style"): needs a `dipping_bowl` visual feature and a 3-way soup filter, plus a sourced doc and photos.
 7. **Ramen-knowledge text Q&A** (planned feature): text question → retrieval over all sections → short grounded answer with citations; fills the empty "After" rows for Before 1–2 in `docs/experiments.md`. Needs guards for free Korean generation (length cap, "모르면 모른다", citations by code).
 8. **Japanese menu / ticket-machine (食券機) reading** (planned feature, OCR with the same VLM).
@@ -96,7 +97,7 @@ Tuning-set misses: donkotsu_1→ieke, karai_1→ieke, shio_4→ieke, toripaitan_
 ## Workflow for a change
 
 1. Re-run the baseline if the Ollama version changed (`ollama --version`).
-2. Change **one thing**; run `scripts/eval_rag.py` on `samples/` (+ the gate/negative check if the gate is touched); compare per-photo predictions with the baseline JSON, not just the total.
+2. Change **one thing**; run `python -m pytest`, then `scripts/eval_rag.py --compare <baseline>` on `samples/` (+ the gate/negative check if the gate is touched) and read the per-photo diff, not just the total. Commit before measuring so `summary.env.git_dirty` is false.
 3. Log it as the next 실험 N in `docs/experiments.md` — including failed attempts and reverts — and rename superseded result files (`rag_samples_v<N>a_*.json` pattern).
 4. Update this file's baseline/backlog, README "한계와 다음 단계" if user-facing, then commit (noreply email). Push and Notion updates only when the user asks.
 
