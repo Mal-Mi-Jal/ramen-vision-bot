@@ -24,3 +24,6 @@ CLAUDE.local.md
 
 # pytest 캐시
 .pytest_cache/
+
+# 게이트 검증용 사진(사용자가 직접 찍은 사진, GPS 정보 포함): 사진은 올리지 않고 정답표(data/negative_labels.csv)만 커밋
+samples_negative/

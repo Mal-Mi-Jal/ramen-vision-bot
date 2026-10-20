@@ -142,5 +142,34 @@ def format_report(diff: dict) -> str:
     return "\n".join(lines)
 
 
+# ---------- 관문(gate) 평가 ----------
+
+# 통과해야 정답인 카테고리. 다른 면 요리는 일부러 통과시킨다(진짜 라멘을 거절하는 것보다 낫다, 실험 10)
+EXPECT_PASS = {"ramen", "other_noodle"}
+
+
+def gate_passed(gate: str) -> bool:
+    """is_noodle_dish 결과 -> 파이프라인으로 넘어갔나. invalid(응답 깨짐)도 거절하지 않고 넘긴다"""
+    return gate != "no"
+
+
+def gate_summary(rows: list[dict]) -> dict:
+    """rows: [{"file", "category", "gate"}] -> 카테고리별 통과 수와 두 종류의 실수"""
+    per_category = {}
+    for r in rows:
+        c = per_category.setdefault(r["category"], {"passed": 0, "total": 0})
+        c["passed"] += gate_passed(r["gate"])
+        c["total"] += 1
+    reject_rows = [r for r in rows if r["category"] not in EXPECT_PASS]
+    pass_rows = [r for r in rows if r["category"] in EXPECT_PASS]
+    # 잘못 통과(false accept): 거절해야 하는데 통과시킨 사진
+    false_accept = [r["file"] for r in reject_rows if gate_passed(r["gate"])]
+    # 잘못 거절(false reject): 통과해야 하는데 거절한 사진
+    false_reject = [r["file"] for r in pass_rows if not gate_passed(r["gate"])]
+    return {"per_category": per_category,
+            "false_accept": false_accept, "false_accept_rate": len(false_accept) / len(reject_rows) if reject_rows else 0,
+            "false_reject": false_reject, "false_reject_rate": len(false_reject) / len(pass_rows) if pass_rows else 0}
+
+
 def load(path: str | Path) -> dict:
     return json.loads(Path(path).read_text(encoding="utf-8"))

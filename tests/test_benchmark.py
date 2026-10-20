@@ -81,6 +81,37 @@ def test_timing():
     assert benchmark.timing(rows) == {"mean": 27.3, "median": 12.0, "max": 60.0, "max_file": "slow_1.jpg"}
 
 
+# ---------- gate_summary ----------
+
+def gate_row(file, category, gate):
+    return {"file": file, "category": category, "gate": gate}
+
+
+@pytest.mark.parametrize("gate, passed", [("yes", True), ("no", False), ("invalid", True)])
+def test_gate_passed(gate, passed):
+    assert benchmark.gate_passed(gate) is passed  # invalid는 거절하지 않고 파이프라인으로 넘긴다
+
+
+def test_gate_summary():
+    rows = [
+        gate_row("ramen.jpg", "ramen", "yes"),
+        gate_row("udon.jpg", "other_noodle", "yes"),
+        gate_row("pasta.jpg", "other_noodle", "no"),       # 잘못 거절
+        gate_row("gukbap.jpg", "broth_bowl", "yes"),       # 잘못 통과
+        gate_row("soup.jpg", "broth_bowl", "no"),
+        gate_row("pizza.jpg", "other_food", "invalid"),    # 응답이 깨져도 통과 처리 -> 잘못 통과
+        gate_row("coffee.jpg", "other_food", "no"),
+        gate_row("chair.jpg", "not_food", "no"),
+    ]
+    s = benchmark.gate_summary(rows)
+
+    assert s["per_category"]["broth_bowl"] == {"passed": 1, "total": 2}
+    assert s["false_accept"] == ["gukbap.jpg", "pizza.jpg"]
+    assert s["false_accept_rate"] == 2 / 5
+    assert s["false_reject"] == ["pasta.jpg"]
+    assert s["false_reject_rate"] == 1 / 3
+
+
 def test_report_mentions_changes():
     old = result([row("b_1.jpg", "ieke", "shio")], env=ENV)
     new = result([row("b_1.jpg", "ieke", "ieke")], env=ENV)
